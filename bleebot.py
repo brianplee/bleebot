@@ -105,4 +105,4 @@ async def timeleft(ctx, a: int, b):
 bot.run(Token)
 
 
->>>>>>> f0e38b2e0868d5b0002361a6a8138ae0149953f3
+#>>>>>>> f0e38b2e0868d5b0002361a6a8138ae0149953f3
