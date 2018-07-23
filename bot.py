@@ -13,7 +13,7 @@ import os
 #Getting api key from heroku
 bot_token = os.environ['BOT_TOKEN']
 
-bot = commands.Bot(command_prefix='-', description='A bot that does a host of shit.')
+bot = commands.Bot(command_prefix='-')
                    
 #the command_prefix is what must be typed to invoke a command
 
