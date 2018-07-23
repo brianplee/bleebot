@@ -56,16 +56,16 @@ async def guide(ctx):
     await ctx.send(embed=embed)
     
 @bot.command()
-async def add(ctx, a: int, b: int):
+async def add(ctx, a: float, b: float):
     await ctx.send(a+b)
 
 @bot.command()
-async def multiply(ctx, a: int, b: int):
-    await ctx.send("The product is:", a*b)
+async def multiply(ctx, a: float, b: float):
+    await ctx.print("The product is:", a*b)
 
 @bot.command()
 async def tip(ctx, a: float, b: float):
-    await ctx.send("A", b,"% tip for a $", a, "meal would be: $",a*b/100)
+    await ctx.print("A", b,"% tip for a $", a, "meal would be: $",a*b/100)
 
 @bot.command()
 async def greet(ctx):
