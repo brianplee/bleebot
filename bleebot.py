@@ -98,11 +98,12 @@ async def timeleft(ctx, a: int, b):
     await ctx.send("Minutes before despawn:", a, "minutes.")
     await ctx.send("Despawn time:", timeReported + timeRemaining)
 
-#if __name__ == '__main__':
+if __name__ == '__main__':
     #import config
     #client.run(config.token)
-
-bot.run(Token)
+    bot.run(Token)
+    
+#bot.run(Token)
 
 
 #>>>>>>> f0e38b2e0868d5b0002361a6a8138ae0149953f3
