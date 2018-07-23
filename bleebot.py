@@ -6,8 +6,8 @@ from datetime import datetime
 from datetime import timedelta
 import discord
 from discord.ext import commands
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
+bot_token = os.environ['BOT_TOKEN']
 
 bot = commands.Bot(command_prefix='-', description='A bot that does a host of shit.')
                    
@@ -99,12 +99,12 @@ async def timeleft(ctx, a: int, b):
     await ctx.send("Minutes before despawn:", a, "minutes.")
     await ctx.send("Despawn time:", timeReported + timeRemaining)
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     #import config
     #client.run(config.token)
-    bot.run(Token)
+    #bot.run(Token)
     
-#bot.run(Token)
+bot.run(bot_token)
 
 
 #>>>>>>> f0e38b2e0868d5b0002361a6a8138ae0149953f3
