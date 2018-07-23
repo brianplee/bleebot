@@ -99,8 +99,8 @@ async def timeleft(ctx, a: int, b):
     await ctx.send("Despawn time:", timeReported + timeRemaining)
 
 #if __name__ == '__main__':
-    import config
-    client.run(config.token)
+    #import config
+    #client.run(config.token)
 
 bot.run(Token)
 
