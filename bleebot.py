@@ -8,8 +8,6 @@ from datetime import timedelta
 import discord
 from discord.ext import commands
 
-print(discord.__version__)
-
 bot = commands.Bot(command_prefix='-', description='A bot that does a host of shit.')
                    
 #the command_prefix is what must be typed to invoke a command
