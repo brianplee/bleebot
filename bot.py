@@ -42,10 +42,10 @@ async def info(ctx):
     embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
     await ctx.send(embed=embed)
 
-bot.remove_command('help')
+#bot.remove_command('help')
 
 @bot.command()
-async def help(ctx):
+async def guide(ctx):
     embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-help", value="Gives this message", inline=false)
     embed.add_field(name="-info", value="Gives info about this bot", inline=false)
