@@ -36,7 +36,7 @@ async def on_ready():
 
 @bot.command()
 async def info(ctx):
-    embed = discord.Embed(title="BleeBot", Description="Because math is hard.", color=0xeee657)
+    embed = discord.Embed(title="BleeBot", description="Because math is hard.", color=0xeee657)
     embed.add_field(name="Author", value="bleeinyourself")
     embed.add_field(name="Server Count", value=f"{len(bot.guilds)}")
     embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
@@ -46,23 +46,25 @@ bot.remove_command('help')
 
 @bot.command()
 async def help(ctx):
+    embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-help", value="Gives this message", inline=false)
     embed.add_field(name="-info", value="Gives info about this bot", inline=false)
     embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15", inline=false)
     embed.add_field(name="-hatchesin minutes HH:MMam/pm", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45 9:30am", inline=false)
     embed.add_field(name="-hatchTime HH:MMam/pm", value="Gives the despawn time given minutes left until hatch", inline=false)
     embed.add_field(name="-timeleft minutes HH:MMam/pm", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45 9:30am", inline=false)
-
+    await ctx.send(embed=embed)
+    
 @bot.command()
 async def add(ctx, a: int, b: int):
-    await ctx.send("The sum is:", a+b)
+    await ctx.send(a+b)
 
 @bot.command()
-async def multiply(ctx, a: int, b:int):
+async def multiply(ctx, a: int, b: int):
     await ctx.send("The product is:", a*b)
 
 @bot.command()
-async def tip(ctx, a: int, b:int):
+async def tip(ctx, a: float, b: float):
     await ctx.send("A", b,"% tip for a $", a, "meal would be: $",a*b/100)
 
 @bot.command()
