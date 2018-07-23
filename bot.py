@@ -11,7 +11,7 @@ from discord.ext.commands import Bot
 import os 
 
 #Getting api key from heroku
-bot_token = os.environ[help]
+bot_token = os.environ['BOT_TOKEN']
 
 bot = commands.Bot(command_prefix='-', description='A bot that does a host of shit.')
                    
@@ -108,5 +108,6 @@ async def timeleft(ctx, a: int, b):
     #client.run(config.token)
     #bot.run(Token)
     
-bot.run(str(os.environ.get('BOT_TOKEN')))
+#bot.run(str(os.environ.get('BOT_TOKEN')))
+bot.run(bot_token)
 
