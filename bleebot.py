@@ -213,7 +213,7 @@ async def timeleft(ctx, a: int, b):
     #import config
     #client.run(config.token)
   
-bot.run(Token)
+bot.run('Token')
 
 
 
