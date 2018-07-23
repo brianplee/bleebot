@@ -1,2 +1,2 @@
-worker: python <botfile>.py
+worker: python bleebot.py
 worker: python bot.py
