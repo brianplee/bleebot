@@ -47,12 +47,12 @@ async def info(ctx):
 @bot.command()
 async def guide(ctx):
     embed = discord.Embed(title="List of commands:")
-    embed.add_field(name="-help", value="Gives this message", inline=false)
-    embed.add_field(name="-info", value="Gives info about this bot", inline=false)
-    embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15", inline=false)
-    embed.add_field(name="-hatchesin minutes HH:MMam/pm", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45 9:30am", inline=false)
-    embed.add_field(name="-hatchTime HH:MMam/pm", value="Gives the despawn time given minutes left until hatch", inline=false)
-    embed.add_field(name="-timeleft minutes HH:MMam/pm", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45 9:30am", inline=false)
+    embed.add_field(name="-guide", value="Gives this message")
+    embed.add_field(name="-info", value="Gives info about this bot")
+    embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15")
+    embed.add_field(name="-hatchesin minutes HH:MMam/pm", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45 9:30am")
+    embed.add_field(name="-hatchTime HH:MMam/pm", value="Gives the despawn time given minutes left until hatch")
+    embed.add_field(name="-timeleft minutes HH:MMam/pm", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45 9:30am")
     await ctx.send(embed=embed)
     
 @bot.command()
@@ -61,11 +61,13 @@ async def add(ctx, a: float, b: float):
 
 @bot.command()
 async def multiply(ctx, a: float, b: float):
-    await ctx.send(a*b)
+    await ctx.print(a*b)
 
 @bot.command()
 async def tip(ctx, a: float, b: float):
-    await ctx.send("A", b,"% tip for a $", a, "meal would be: $",a*b/100)
+    embed = discord.Embed(title="Your tip")
+    embed.add_field(value="A",b,"% tip for a $",a,"meal would be: $",a*b/100)
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def greet(ctx):
