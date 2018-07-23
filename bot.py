@@ -61,7 +61,7 @@ async def add(ctx, a: float, b: float):
 
 @bot.command()
 async def multiply(ctx, a: float, b: float):
-    await ctx.print(a*b)
+    await ctx.send(a*b)
 
 @bot.command()
 async def tip(ctx, a: float, b: float):
