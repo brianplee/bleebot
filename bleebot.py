@@ -7,6 +7,7 @@ from datetime import timedelta
 import discord
 from discord.ext import commands
 
+#Getting api key from heroku
 bot_token = os.environ['BOT_TOKEN']
 
 bot = commands.Bot(command_prefix='-', description='A bot that does a host of shit.')
