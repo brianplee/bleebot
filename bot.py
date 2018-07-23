@@ -106,4 +106,5 @@ async def timeleft(ctx, a: int, b):
     #client.run(config.token)
     #bot.run(Token)
     
-bot.run(bot_token)
+#bot.run(bot_token)
+bot.run(os.environ['BOT_TOKEN'])
