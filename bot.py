@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 import discord
 from discord.ext import commands
+import os 
 
 #Getting api key from heroku
 bot_token = os.environ['BOT_TOKEN']
