@@ -1,2 +1,2 @@
-worker: python3 bleebot.py
+worker: python3 bot.py
 
