@@ -61,11 +61,11 @@ async def add(ctx, a: float, b: float):
 
 @bot.command()
 async def multiply(ctx, a: float, b: float):
-    await ctx.print("The product is:", a*b)
+    await ctx.print(a*b)
 
 @bot.command()
 async def tip(ctx, a: float, b: float):
-    await ctx.print("A", b,"% tip for a $", a, "meal would be: $",a*b/100)
+    await ctx.send("A", b,"% tip for a $", a, "meal would be: $",a*b/100)
 
 @bot.command()
 async def greet(ctx):
