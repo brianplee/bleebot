@@ -86,12 +86,14 @@ async def hatchesin(ctx, a: int, b):
     await ctx.send("Despawn time:", timeReported + hatchMin + raidDuration)
 
 #Despawn from hatch time ===============================================================
+@bot.command()
 async def hatchtime(ctx, a):
     hatchesAt = datetime.strptime(a, "%H:%M%p")
     raidDuration = timedelta(minutes=45)
     await ctx.send("Despawns at:", hatchesAt + raidDuration)
 
 #Despawn from time remaining on boss ====================================================
+@bot.command()
 async def timeleft(ctx, a: int, b):
     timeRemaining = timedelta(minutes=a)
     timeReported = datetime.strptime(b, "%H:%M%p")
