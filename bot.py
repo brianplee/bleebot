@@ -10,9 +10,6 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os 
-import os,time
-
-os.environ['TZ'] = 'PDT'
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
