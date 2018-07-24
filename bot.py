@@ -73,7 +73,6 @@ async def greet(ctx):
 @bot.command()
 async def hatchesin(ctx, a: int):
     hatchMin = timedelta(minutes=a)
-    currentTime = datetime.now('America/Los_Angeles') 
     raidDuration = timedelta(minutes=45)
     hatchTime = currentTime + hatchMin 
     despawnTime = currentTime + hatchMin + raidDuration 
