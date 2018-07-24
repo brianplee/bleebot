@@ -71,10 +71,10 @@ async def greet(ctx):
 @bot.command()
 async def hatchesin(ctx, a: int):
     hatchMin = timedelta(minutes=a)
-    currentTime = datetime.now()
+    currentTime = datetime.now() - 420
     raidDuration = timedelta(minutes=45)
-    hatchTime = currentTime + hatchMin
-    despawnTime = currentTime + hatchMin + raidDuration
+    hatchTime = currentTime + hatchMin - 420
+    despawnTime = currentTime + hatchMin + raidDuration - 420
     await ctx.send("Reported time: {}".format(currentTime))
     await ctx.send("Hatches in {} minutes.".format(a))
     await ctx.send("Hatch time: {}".format(hatchTime))
