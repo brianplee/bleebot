@@ -45,10 +45,10 @@ async def info(ctx):
 async def guide(ctx):
     embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-guide", value="Gives this message", inline=False)
-    embed.add_field(name="-info", value="Gives info about this bot", inline=False)
+    embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
     embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15", inline=False)
     embed.add_field(name="-hatchesin (minutes)", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45", inline=False)
-    embed.add_field(name="-hatchTime (HH:MMam/pm)", value="Gives the despawn time given the hatch time.  Ex) -hatchTime 09:30am", inline=False)
+    embed.add_field(name="-hatchesat (HH:MMam/pm)", value="Gives the despawn time given the hatch time.  Ex) -hatchTime 09:30am", inline=False)
     embed.add_field(name="-timeleft (minutes)", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     await ctx.send(embed=embed)
     
@@ -85,7 +85,7 @@ async def hatchesin(ctx, a: int):
 
 #Despawn from hatch time ===============================================================
 @bot.command()
-async def hatchtime(ctx, a):
+async def hatchesat(ctx, a):
     hatchesAt = datetime.strptime(a, "%H:%M%p")
     raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
