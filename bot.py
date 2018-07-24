@@ -11,8 +11,6 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import os 
 
-os.environ['TZ'] = "US/Western"
-
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
 
