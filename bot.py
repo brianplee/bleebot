@@ -42,12 +42,12 @@ async def info(ctx):
 @bot.command()
 async def guide(ctx):
     embed = discord.Embed(title="List of commands:")
-    embed.add_field(name="-guide", value="Gives this message")
-    embed.add_field(name="-info", value="Gives info about this bot")
-    embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15")
-    embed.add_field(name="-hatchesin minutes HH:MMam/pm", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45 9:30am")
-    embed.add_field(name="-hatchTime HH:MMam/pm", value="Gives the despawn time given the hatch time.")
-    embed.add_field(name="-timeleft minutes HH:MMam/pm", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45 9:30am")
+    embed.add_field(name="-guide", value="Gives this message", inline=false)
+    embed.add_field(name="-info", value="Gives info about this bot", inline=false)
+    embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15", inline=false)
+    embed.add_field(name="-hatchesin (minutes)", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45", inline=false)
+    embed.add_field(name="-hatchTime (HH:MMam/pm)", value="Gives the despawn time given the hatch time.  Ex) -hatchTime 09:30am", inline=false)
+    embed.add_field(name="-timeleft (minutes)", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=false)
     await ctx.send(embed=embed)
     
 @bot.command()
@@ -69,14 +69,13 @@ async def greet(ctx):
 
 #Despawn from minutes until hatch ======================================================
 @bot.command()
-async def hatchesin(ctx, a: int, b):
-    timeReported = datetime.strptime(b,"%H:%M%p")
+async def hatchesin(ctx, a: int):
     hatchMin = timedelta(minutes=a)
     currentTime = datetime.now()
     raidDuration = timedelta(minutes=45)
-    hatchTime = timeReported + hatchMin
-    despawnTime = timeReported + hatchMin + raidDuration
-    await ctx.send("Reported time: {}".format(b))
+    hatchTime = currentTime + hatchMin
+    despawnTime = currentTime + hatchMin + raidDuration
+    await ctx.send("Reported time: {}".format(currentTime))
     await ctx.send("Hatches in {} minutes.".format(a))
     await ctx.send("Hatch time: {}".format(hatchTime))
     await ctx.send("Despawn time: {}".format(despawnTime))
@@ -92,10 +91,11 @@ async def hatchtime(ctx, a):
 
 #Despawn from time remaining on boss ====================================================
 @bot.command()
-async def timeleft(ctx, a: int, b):
+async def timeleft(ctx, a: int):
     timeRemaining = timedelta(minutes=a)
-    timeReported = datetime.strptime(b, "%H:%M%p")
-    despawnTime = timeReported + timeRemaining
+    currentTime = datetime.now()
+    despawnTime = currentTime + timeRemaining
+    await ctx.send("Reported at {}".format(currentTime))
     await ctx.send("Despawns in {} minutes".format(a))
     await ctx.send("Despawns at {}".format(despawnTime))
  
