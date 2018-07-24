@@ -5,12 +5,13 @@ import datetime
 from datetime import time
 from datetime import datetime
 from datetime import timedelta
-from pytz import timezone
 import asyncio 
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os 
+
+os.environ['TZ'] = "US/Western"
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
