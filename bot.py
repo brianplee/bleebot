@@ -78,10 +78,10 @@ async def hatchesin(ctx, a: int):
     currentTime = datetime.now() + pstDelta
     hatchTime = currentTime + hatchMin
     despawnTime = currentTime + hatchMin + raidDuration 
-    await ctx.send("Reported time: {}:{}".format(currentTime.hour, currentTime.minute))
+    await ctx.send("Reported time: {}".format(currentTime.time))
     await ctx.send("Hatches in {} minutes.".format(a))
-    await ctx.send("Hatch time: {}:{}".format(hatchTime.hour, hatchTime.minute))
-    await ctx.send("Despawn time: {}:{}".format(despawnTime.hour, despawnTime.minute))
+    await ctx.send("Hatch time: {}".format(hatchTime.time))
+    await ctx.send("Despawn time: {}".format(despawnTime.time))
 
 #Despawn from hatch time ===============================================================
 @bot.command()
@@ -89,8 +89,8 @@ async def hatchtime(ctx, a):
     hatchesAt = datetime.strptime(a, "%H:%M%p")
     raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
-    await ctx.send("Hatches at: {}:{}".format(a.hour, a.minute))
-    await ctx.send("Despawns at: {}:{}".format(despawnTime.hour, despawnTime.minute))
+    await ctx.send("Hatches at: {}".format(a.time))
+    await ctx.send("Despawns at: {}".format(despawnTime.time))
 
 #Despawn from time remaining on boss ====================================================
 @bot.command()
@@ -99,9 +99,9 @@ async def timeleft(ctx, a: int):
     pstDelta = timedelta(hours=5)
     currentTime = datetime.now() + pstDelta
     despawnTime = currentTime + timeRemaining 
-    await ctx.send("Reported at {}:{}".format(currentTime.hour, currentTime.minute))
+    await ctx.send("Reported at {}".format(currentTime.time))
     await ctx.send("Despawns in {} minutes".format(a))
-    await ctx.send("Despawns at {}:{}".format(despawnTime.hour, despawnTime.minute))
+    await ctx.send("Despawns at {}".format(despawnTime.time))
  
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
