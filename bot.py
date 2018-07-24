@@ -65,9 +65,7 @@ async def multiply(ctx, a: float, b: float):
 
 @bot.command()
 async def tip(ctx, a: float, b: float):
-    embed = discord.Embed(title="Your tip")
-    embed.add_field(value="A",b,"% tip for a $",a,"meal would be: $",a*b/100)
-    await ctx.send(embed=embed)
+    await ctx.send(value="A {}% tip for a ${} meal or service would be: $".format(b, a), a*b/100)
 
 @bot.command()
 async def greet(ctx):
