@@ -46,7 +46,7 @@ async def guide(ctx):
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
     embed.add_field(name="-tip price percent", value="Calculates your tip.  Ex) -tip 20 15", inline=False)
     embed.add_field(name="-hatchesin (minutes)", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45", inline=False)
-    embed.add_field(name="-hatchesat (HH:MMam/pm)", value="Gives the despawn time given the hatch time.  Ex) -hatchTime 09:30am", inline=False)
+    embed.add_field(name="-hatchesat (HH:MMam/pm)", value="Gives the despawn time given the hatch time.  Ex) -hatchesat 09:30am", inline=False)
     embed.add_field(name="-timeleft (minutes)", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     await ctx.send(embed=embed)
     
