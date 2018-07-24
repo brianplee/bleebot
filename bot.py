@@ -105,7 +105,8 @@ async def timeleft(ctx, a: int):
     await ctx.send("Despawns in {} minutes".format(a))
     await ctx.send("Despawns at {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
  
-#TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).  
+#TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).
+#http://discordpy.readthedocs.io/en/latest/api.html#discord.on_reaction_add
 #@client.event
 #async def on_reaction_add(:smiley:, user):
     #client.delete_message(:smiley:.message)
