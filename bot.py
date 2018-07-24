@@ -66,7 +66,7 @@ async def multiply(ctx, a: float, b: float):
 @bot.command()
 async def tip(ctx, a: float, b: float):
     c = a*b/100
-    await ctx.send("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), (round(c,2)))
+    await ctx.send("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), round(c,2)))
 
 @bot.command()
 async def greet(ctx):
