@@ -89,7 +89,7 @@ async def hatchesat(ctx, a):
     hatchesAt = datetime.strptime(a, "%H:%M%p")
     raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
-    await ctx.send("Hatches at: {}:{}".format("{0:0=2d}".format(a.hour), "{0:0=2d}".format(a.minute)))
+    await ctx.send("Hatches at: {}:{}".format("{0:0=2d}".format(hatchesAt.hour), "{0:0=2d}".format(hatchesAt.minute)))
     await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
 
 #Despawn from time remaining on boss ====================================================
