@@ -40,10 +40,6 @@ async def info(ctx):
 #bot.remove_command('help')
 
 @bot.command()
-async def savvyt(ctx):
-    await ctx.send("Go back to bed.")
-
-@bot.command()
 async def guide(ctx):
     embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-guide", value="Gives this message", inline=False)
