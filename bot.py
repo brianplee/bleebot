@@ -86,7 +86,7 @@ async def hatchesin(ctx, a: int):
 #Despawn from hatch time ===============================================================
 @bot.command()
 async def hatchtime(ctx, a):
-    hatchesAt = datetime.strptime(a, "%I:%M%p")
+    hatchesAt = datetime.strptime(a, "%H:%M%p")
     raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
     await ctx.send("Hatches at: {}".format(a))
