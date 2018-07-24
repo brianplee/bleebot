@@ -105,6 +105,8 @@ async def timeleft(ctx, a: int):
     await ctx.send("Despawns in {} minutes".format(a))
     await ctx.send("Despawns at {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
  
+#TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).  
+
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
     
