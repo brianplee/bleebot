@@ -87,9 +87,11 @@ async def hatchesin(ctx, a: int, b):
     hatchMin = timedelta(minutes=a)
     currentTime = datetime.now()
     raidDuration = timedelta(minutes=45)
-    await ctx.send("Hatches in", a, "minutes.")
-    await ctx.send("Hatch time:", timeReported + hatchMin)
-    await ctx.send("Despawn time:", timeReported + hatchMin + raidDuration)
+    hatchTime = timeReported + hatchMin
+    despawnTime = timeReported + hatchMin + raidDuration
+    await ctx.send("Hatches in {} minutes.".format(a))
+    await ctx.send("Hatch time: {}".format(hatchTime))
+    await ctx.send("Despawn time: {}".format(despawnTime))
 
 #Despawn from hatch time ===============================================================
 @bot.command()
