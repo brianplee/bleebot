@@ -49,7 +49,11 @@ async def guide(ctx):
     embed.add_field(name="-hatchesat", value="Gives the despawn time given the hatch time.  Ex) -hatchesat 09:30am", inline=False)
     embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     await ctx.send(embed=embed)
-    
+
+@bot.command()
+async def savvyt(ctx):
+    await ctx.send("Go back to bed.")
+  
 @bot.command()
 async def add(ctx, a: float, b: float):
     await ctx.send(a+b)
