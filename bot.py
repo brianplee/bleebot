@@ -77,20 +77,20 @@ async def hatchesin(ctx, a: int):
     currentTime = datetime.now() - pstDelta
     hatchTime = currentTime + hatchMin
     despawnTime = currentTime + hatchMin + raidDuration 
-    await ctx.send("Reported at: {}:{}".format("{0:0=2d}".format(currentTime.hour), "{0:0=2d}".format(currentTime.minute)))
-    await ctx.send("Hatches in: {} minutes.".format(a))
-    await ctx.send("Hatches at: {}:{}".format("{0:0=2d}".format(hatchTime.hour), "{0:0=2d}".format(hatchTime.minute)))
-    await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
+    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
+    await ctx.send("Hatches in {} minutes.".format(a))
+    await ctx.send("Hatches at {:%I:%M%p}".format(hatchTime))
+    #await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
     await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
 
 #Despawn from hatch time ===============================================================
 @bot.command()
 async def hatchesat(ctx, a):
-    hatchesAt = datetime.strptime(a, "%H:%M%p")
+    hatchesAt = datetime.strptime(a, "%I:%M%p")
     raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
-    await ctx.send("Hatches at: {}:{}".format("{0:0=2d}".format(hatchesAt.hour), "{0:0=2d}".format(hatchesAt.minute)))
-    await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
+    await ctx.send("Hatches at {:%I:%M%p}".format(hatchesAt))
+    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
 
 #Despawn from time remaining on boss ====================================================
 @bot.command()
@@ -99,9 +99,9 @@ async def timeleft(ctx, a: int):
     pstDelta = timedelta(hours=7)
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
-    await ctx.send("Reported at: {}:{}".format("{0:0=2d}".format(currentTime.hour), "{0:0=2d}".format(currentTime.minute)))
-    await ctx.send("Despawns in: {} minutes".format(a))
-    await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
+    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
+    await ctx.send("Despawns in {} minutes".format(a))
+    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
  
 #TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).
 #http://discordpy.readthedocs.io/en/latest/api.html#discord.on_reaction_add
