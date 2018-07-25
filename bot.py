@@ -81,6 +81,7 @@ async def hatchesin(ctx, a: int):
     await ctx.send("Hatches in: {} minutes.".format(a))
     await ctx.send("Hatches at: {}:{}".format("{0:0=2d}".format(hatchTime.hour), "{0:0=2d}".format(hatchTime.minute)))
     await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
+    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
 
 #Despawn from hatch time ===============================================================
 @bot.command()
