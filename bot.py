@@ -52,7 +52,7 @@ async def guide(ctx):
 
 @bot.command()
 async def savvyt(ctx):
-    await ctx.send("Go back to bed.")
+    await ctx.send("Go the fuck back to sleep.")
   
 @bot.command()
 async def add(ctx, a: float, b: float):
