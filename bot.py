@@ -10,6 +10,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os 
+import csv
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
@@ -115,6 +116,18 @@ async def timeleft(ctx, a: int):
 
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
+    #page 482 in python library - csv module 
+  
+@bot.command()
+async def export(ctx):
+ await bot.request_offline_members(ctx.message.server)
+ memberNames = [m.display_name for m in ctx.message.server.members]
+ with open('temp.csv', 'w', newline = '') as csvFile:
+    writer = csv.writer(csvFile, dialect='excel')
+    for v in memberNames:
+        writer.writerow([v])
+ await bot.send_file(ctx.message.author, 'temp.csv', filename='exportedmembers.csv', content="Check your DM for the csv!")
+  
     
 #TO DO: GymDataBase ===========================================================================
     #store gym name, googlemaps link, and description in free database (google sheets)
