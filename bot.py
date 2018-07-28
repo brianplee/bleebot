@@ -121,11 +121,10 @@ async def timeleft(ctx, a: int):
 @bot.command()
 async def export(ctx):
  await bot.request_offline_members(ctx.message.server)
- memberNames = [m.display_name for m in ctx.message.server.members]
- with open('temp.csv', mode='w', newline ='') as f:
+ memberNames = [m.display_name for m in ctx.message.server.members]  #obtains list as memberNames
+ with open('memberlist.csv', mode='w', newline='') as f:
     writer = csv.writer(f, dialect='excel')
-    for v in memberNames:
-        writer.writerow(v)
+    writer.writerow([v])
  await bot.send_file(ctx.message.author, 'temp.csv', filename='exportedmembers.csv', content="Check your DM for the csv!")
   
     
