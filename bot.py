@@ -1,6 +1,8 @@
  
 #Locally: CMD ->pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
 #Declare dependents on Heroku: git+https://github.com/Rapptz/discord.py@rewrite
+#git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py[voice]
+
 import datetime
 from datetime import time
 from datetime import datetime
