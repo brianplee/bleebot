@@ -124,7 +124,8 @@ async def export(ctx):
  memberNames = [m.display_name for m in ctx.message.server.members]  #obtains list as memberNames
  with open('memberlist.csv', mode='w', newline='') as f:
     writer = csv.writer(f, dialect='excel')
-    writer.writerow([v])
+    for v in memberNames:     #iterates through list to create a new row for each name
+        writer.writerow([v])  #if by itself without for-loop, would create columns for each name
  await bot.send_file(ctx.message.author, 'temp.csv', filename='exportedmembers.csv', content="Check your DM for the csv!")
   
     
