@@ -120,15 +120,26 @@ async def timeleft(ctx, a: int):
   
 @bot.command()
 async def export(ctx):
- await bot.request_offline_members(ctx.message.server)
- memberNames = [m.display_name for m in ctx.message.server.members]  #obtains list as memberNames
- with open('memberlist.csv', mode='w', newline='') as f:
-    writer = csv.writer(f, dialect='excel')
-    for v in memberNames:     #iterates through list to create a new row for each name
-        writer.writerow([v])  #if by itself without for-loop, would create columns for each name
- await bot.send_file(ctx.message.author, 'memberlist.csv', filename='memberlist.csv', content="Check your DM for the csv!")
+    await bot.request_offline_members(ctx.message.server)
+    memberNames = [m.display_name for m in ctx.message.server.members]  #obtains list as memberNames
+    with open('memberlist.csv', mode='w', newline='') as f:
+        writer = csv.writer(f, dialect='excel')
+        for v in memberNames:     #iterates through list to create a new row for each name
+            writer.writerow([v])  #if by itself without for-loop, would create columns for each name
+    await bot.send_file(ctx.message.author, 'memberlist.csv', filename='memberlist.csv', content="Check your DM for the csv!")
   
+@bot.command()
+async def testexport(ctx):
+    myRow = ['a', 'b', 'c']
+    with open('temp.csv', mode='w', encoding='utf-8') as f:
+        writer = csv.writer(f, dialect='excel')
+        for v in myRow:
+            writer.writerow([v])
+    await bot.send_file(ctx.message.author, 'temp.csv', filename='test.csv', content="Check your DM for the csv.")
     
+            
+   
+ 
 #TO DO: GymDataBase ===========================================================================
     #store gym name, googlemaps link, and description in free database (google sheets)
     #call gym info from google sheets
