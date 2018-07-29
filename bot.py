@@ -135,7 +135,14 @@ async def testexport(ctx):
             writer.writerow([v])
     await bot.send_file(ctx.message.author, 'temp.csv', filename='test.csv', content="Check your DM for the csv.")
     
-            
+@bot.command()
+async def members(ctx):
+    await bot.request_offline_members(ctx.message.server)
+    memberNames = [ctx.message.server.members]
+    if not server.large:
+        await ctx.send(memberNames)
+    else:
+        await ctx.send("There are too many members for Discord to provide.")
    
  
 #TO DO: GymDataBase ===========================================================================
