@@ -117,7 +117,7 @@ async def timeleft(ctx, a: int):
     #page 482 in python library - csv module 
   
 @bot.command()
-async def export(ctx):
+async def exportmembers(ctx):
     await bot.request_offline_members(ctx.message.server) 
     fetch_offline_members = False 
     memberNames = [m.display_name for m in ctx.message.server.members]  #obtains list as memberNames
