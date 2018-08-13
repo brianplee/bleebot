@@ -126,10 +126,10 @@ async def exportmembers(ctx):
             writer.writerow([v])  #if by itself without for-loop, would create columns for each name
     await bot.send_file(ctx.message.author, 'temp.csv', filename='memberlist.csv', content="Check your DM for the csv!")
   
-#@bot.command()
-#async def testexport(ctx):
-    #myRow = ['a', 'b', 'c']
-    #await ctx.send(myRow[0])
+@bot.command()
+async def testexport(ctx):
+    myRow = ['a', 'b', 'c']
+    await ctx.send(myRow[0])
         
     
     
