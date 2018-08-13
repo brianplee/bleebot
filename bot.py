@@ -129,7 +129,7 @@ async def exportmembers(ctx):
 @bot.command()
 async def testexport(ctx):
     myRow = ['a', 'b', 'c']
-    await ctx.send(myRow)
+    await ctx.send(myRow[0])
         
     
     
