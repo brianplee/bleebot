@@ -129,11 +129,9 @@ async def exportmembers(ctx):
 @bot.command()
 async def testexport(ctx):
     myRow = ['a', 'b', 'c']
-    with open('temp.csv', mode='w', encoding='utf-8') as f:
-        writer = csv.writer(f, dialect='excel')
-        for v in myRow:
-            writer.writerow([v])
-    await bot.send_file(ctx.message.author, 'temp.csv', filename='test.csv', content="Check your DM for the csv.")
+    await ctx.send(myRow)
+        
+    
     
 @bot.command()
 async def members(ctx):
