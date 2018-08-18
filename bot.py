@@ -119,20 +119,20 @@ async def timeleft(ctx, a: int):
 @bot.command()
 async def exportmembers(ctx):
     await bot.request_offline_members(ctx.message.server) 
-    memberNames = [m.display_name for m in ctx.message.server.members]  #obtains list as memberNames
+    memberNames = [m.display_name for m in ctx.message.server.members]  #obtains members of server where command was entered
+    nameColors = [n.display_name.colour for n in ctx.message.server.members]
     with open('memberlist.csv', mode='w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f, dialect='excel')
         for v in memberNames:     #iterates through list to create a new row for each name
             writer.writerow([v])  #if by itself without for-loop, would create columns for each name
-    await bot.send_file(ctx.message.author, 'temp.csv', filename='memberlist.csv', content="Check your DM for the csv!")
+        await bot.send_file(ctx.message.author, 'temp.csv', filename='memberlist.csv', content="Check your DM for the csv!")
   
 @bot.command()
 async def testexport(ctx):
     myRow = ['a', 'b', 'c']
-    await ctx.send(myRow)
-        
-    
-    
+    for n in myRow:
+        await ctx.send(n)
+                                                                                                                                                                                       
 @bot.command()
 async def members(ctx):
     await bot.request_offline_members(ctx.message.server)
