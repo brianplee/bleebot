@@ -135,9 +135,11 @@ async def testexport(ctx):
                                                                                                                                                                                        
 @bot.command()
 async def members(ctx):
-    await bot.request_offline_members(ctx.message.server)
-    memberNames = [m.display_name for m in ctx.message.server.members]
-    await ctx.send(memberNames)
+    #await bot.request_offline_members(ctx.message.server)
+    #memberNames = [m.display_name for m in ctx.message.server.members]
+    memberList = ctx.message.server.members
+    for m in memberList:
+        await ctx.send(m)
     #if not server.large:
         #await ctx.send(memberNames)
     #else:
