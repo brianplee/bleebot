@@ -140,7 +140,7 @@ async def members(ctx):
     if not server.large:
         await ctx.send(memberNames)
     else:
-        #await ctx.send("There are too many members for Discord to provide.")
+        await ctx.send("There are too many members for Discord to provide.")
    
  
 #TO DO: GymDataBase ===========================================================================
