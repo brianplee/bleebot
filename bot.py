@@ -138,7 +138,7 @@ async def members(ctx):
     await bot.request_offline_members(ctx.message.server)
     memberNames = [m.display_name for m in ctx.message.server.members]
     if not server.large:
-        await ctx.send(memberNames)
+        await ctx.send(m)
     else:
         await ctx.send("There are too many members for Discord to provide.")
    
