@@ -125,7 +125,7 @@ async def exportmembers(ctx):
         writer = csv.writer(f, dialect='excel')
         for v in memberNames:     #iterates through list to create a new row for each name
             writer.writerow([v])  #if by itself without for-loop, would create columns for each name
-        await bot.send_file(ctx.message.author, 'temp.csv', filename='memberlist.csv', content="Check your DM for the csv!")
+    await bot.send_file(ctx.message.author, 'temp.csv', filename='memberlist.csv', content="Check your DM for the csv!")
   
 @bot.command()
 async def testexport(ctx):
@@ -134,7 +134,7 @@ async def testexport(ctx):
         writer = csv.writer(f, dialect='excel')
         for n in myRow:
             writer.writerow([n])
-        await bot.send_file(ctx.message.author, 'temp.csv', filename='myrow.csv', content="Check your DMs.")
+    await bot.send_file(ctx.message.author, 'temp.csv', filename='myrow.csv', content="Check your DMs.")
                             
                                                                                                                                                                                        
 @bot.command()
