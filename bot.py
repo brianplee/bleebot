@@ -119,7 +119,7 @@ async def timeleft(ctx, a: int):
   
 @bot.command()
 async def sheet(ctx):
-    await ctx.send("<https://docs.google.com/spreadsheets/d/1gvSX_aiytWozjFF_c9Vy8bqenQnVrEbh4BhddJtWTsI/edit?usp=sharing>")
+    await ctx.send("Gyms and Stops sheet: <https://docs.google.com/spreadsheets/d/1gvSX_aiytWozjFF_c9Vy8bqenQnVrEbh4BhddJtWTsI/edit?usp=sharing>")
   
 @bot.command()
 async def exportmembers(ctx):
