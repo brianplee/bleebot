@@ -51,6 +51,7 @@ async def guide(ctx):
     embed.add_field(name="-hatchesin", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45", inline=False)
     embed.add_field(name="-hatchesat", value="Gives the despawn time given the hatch time.  Ex) -hatchesat 09:30am", inline=False)
     embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
+    embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
     await ctx.send(embed=embed)
   
 @bot.command()
@@ -115,6 +116,10 @@ async def timeleft(ctx, a: int):
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
     #page 482 in python library - csv module 
+  
+@bot.command()
+async def sheet(ctx):
+    await ctx.send("https://docs.google.com/spreadsheets/d/1gvSX_aiytWozjFF_c9Vy8bqenQnVrEbh4BhddJtWTsI/edit?usp=sharing")
   
 @bot.command()
 async def exportmembers(ctx):
