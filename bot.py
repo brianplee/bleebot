@@ -107,7 +107,6 @@ async def timeleft(ctx, a: int):
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
     await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
-    await ctx.send("Test {:%m/%d %I:%M%p}".format(currentTime))
     await ctx.send("Despawns in {} minutes".format(a))
     await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
  
@@ -131,7 +130,7 @@ async def sheet(ctx):
 
 async def report(ctx, stopName, stopLoc, stopReward):
     timeStamp = currentTime = datetime.now() - pstDelta
-    formattedTimeStamp = "{%I:%M%p}".format(timeStamp)
+    formattedTimeStamp = "{:%m/%d %I:%M%p}".format(timeStamp)
     await ctx.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
   
   
