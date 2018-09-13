@@ -132,7 +132,7 @@ async def sheet(ctx):
 async def report(ctx, stopName, stopLoc, stopReward):
     timeStamp = currentTime = datetime.now() - pstDelta
     formattedTimeStamp = "{%I:%M%p}".format(timeStamp)
-    await ctx.append_row([stopName, stopLoc, stopReward, 
+    await ctx.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
   
   
 #TO DO: MemberExporter ========================================================================
