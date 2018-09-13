@@ -12,7 +12,9 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os 
-import csv
+import json
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
@@ -52,6 +54,7 @@ async def guide(ctx):
     embed.add_field(name="-hatchesat", value="Gives the despawn time given the hatch time.  Ex) -hatchesat 09:30am", inline=False)
     embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
+    embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report ", inline=False)
     await ctx.send(embed=embed)
   
 @bot.command()
@@ -104,6 +107,7 @@ async def timeleft(ctx, a: int):
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
     await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
+    await ctx.send("Test {%I:%M%p}".format(currentTime))
     await ctx.send("Despawns in {} minutes".format(a))
     await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
  
@@ -113,14 +117,27 @@ async def timeleft(ctx, a: int):
 #async def on_reaction_add(reaction, user):
     #client.delete_message(reaction.message)
 
+
+#Quest Reporter ===============================================================================
+
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secrets.json', scope)
+gc = gspread.authorize(credentials)
+wksheet = gc.open("QuestReporter").sheet1
+
+@bot.command()
+async def sheet(ctx):
+    await ctx.send("Sheet: <https://www.goo.gl/8h8jdQ>")
+
+async def report(ctx, stopName, stopLoc, stopReward):
+    timeStamp = currentTime = datetime.now() - pstDelta
+    formattedTimeStamp = "{%I:%M%p}".format(timeStamp)
+    await ctx.append_row([stopName, stopLoc, stopReward, 
+  
+  
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
     #page 482 in python library - csv module 
-  
-@bot.command()
-async def sheet(ctx):
-    await ctx.send("Gyms and Stops sheet: <https://docs.google.com/spreadsheets/d/1gvSX_aiytWozjFF_c9Vy8bqenQnVrEbh4BhddJtWTsI/edit?usp=sharing>")
-  
 @bot.command()
 async def exportmembers(ctx):
     await bot.request_offline_members(ctx.message.server) 
@@ -141,23 +158,6 @@ async def testexport(ctx):
             writer.writerow([n])
     await bot.send_file(ctx.message.author, 'temp.csv', filename='myrow.csv', content="Check your DMs.")
                             
-                                                                                                                                                                                       
-@bot.command()
-async def members(ctx):
-    #await bot.request_offline_members(ctx.message.server)
-    #memberNames = [m.display_name for m in ctx.message.server.members]
-    memberList = ctx.message.server.members
-    for m in memberList:
-        await ctx.send(m)
-    #if not server.large:
-        #await ctx.send(memberNames)
-    #else:
-        #await ctx.send("There are too many members for Discord to provide.")
-   
- 
-#TO DO: GymDataBase ===========================================================================
-    #store gym name, googlemaps link, and description in free database (google sheets)
-    #call gym info from google sheets
   
 #bot.run(str(os.environ.get('BOT_TOKEN')))
 bot.run(bot_token)
