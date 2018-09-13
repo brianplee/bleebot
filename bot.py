@@ -121,8 +121,8 @@ async def timeleft(ctx, a: int):
 #Quest Reporter ===============================================================================
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secrets.json', scope)
-gc = gspread.authorize(credentials)
+#credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secrets.json', scope)
+#gc = gspread.authorize(credentials)
 wksheet = gc.open("QuestReporter").sheet1
 
 @bot.command()
