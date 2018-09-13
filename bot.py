@@ -107,7 +107,7 @@ async def timeleft(ctx, a: int):
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
     await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
-    await ctx.send("Test {%I:%M%p}".format(currentTime))
+    await ctx.send("Test {:%m/%d %I:%M%p}".format(currentTime))
     await ctx.send("Despawns in {} minutes".format(a))
     await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
  
