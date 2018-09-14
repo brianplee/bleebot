@@ -134,7 +134,7 @@ async def report(ctx, stopName, stopLoc, stopReward):
     formattedTimeStamp = "{:%m/%d %I:%M%p}".format(timeStamp)
     reporterName = discord.Message.author.name
     await ctx.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
-    await ctx.send("Thanks for reporting, " reporterName "!  Type -sheet to see today's quests.")
+    await ctx.send("Thanks for reporting, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
   
 #TO DO: MemberExporter ========================================================================
