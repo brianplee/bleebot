@@ -121,8 +121,11 @@ async def timeleft(ctx, a: int):
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 #credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secrets.json', scope)
-#gc = gspread.authorize(credentials)
-#wksheet = gc.open("QuestReporter").sheet1
+credentials = SignedJwtAssertionCredentials(JSON_KEY['client_email'],
+                                                    JSON_KEY['private_key'].encode(),
+                                                    SCOPE)
+gc = gspread.authorize(credentials)
+wksheet = gc.open("QuestReporter").sheet1
 
 @bot.command()
 async def sheet(ctx):
