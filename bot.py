@@ -57,67 +57,16 @@ async def guide(ctx):
     embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report ", inline=False)
     await ctx.send(embed=embed)
   
-@bot.command()
-async def add(ctx, a: float, b: float):
-    await ctx.send(a+b)
 
-@bot.command()
-async def multiply(ctx, a: float, b: float):
-    await ctx.send(a*b)
-
-@bot.command()
-async def tip(ctx, a: float, b: float):
-    c = a*b/100
-    await ctx.send("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), round(c,2)))
-   
 #http://www.fileformat.info/info/emoji/list.htm
 @bot.command()
 async def greet(ctx):
     await ctx.send(":smiley: :wave: Hi.  I am Bleebot.")
 
-#Despawn from minutes until hatch ======================================================
-@bot.command()
-async def hatchesin(ctx, a: int):
-    hatchMin = timedelta(minutes=a)
-    raidDuration = timedelta(minutes=45)
-    pstDelta = timedelta(hours=7)
-    currentTime = datetime.now() - pstDelta
-    hatchTime = currentTime + hatchMin
-    despawnTime = currentTime + hatchMin + raidDuration 
-    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
-    await ctx.send("Hatches in {} minutes.".format(a))
-    await ctx.send("Hatches at {:%I:%M%p}".format(hatchTime))
-    #await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
-    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
-
-#Despawn from hatch time ===============================================================
-@bot.command()
-async def hatchesat(ctx, a):
-    hatchesAt = datetime.strptime(a, "%I:%M%p")
-    raidDuration = timedelta(minutes=45)
-    despawnTime = hatchesAt + raidDuration
-    await ctx.send("Hatches at {:%I:%M%p}".format(hatchesAt))
-    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
-
-#Despawn from time remaining on boss ====================================================
-@bot.command()
-async def timeleft(ctx, a: int):
-    timeRemaining = timedelta(minutes=a)
-    pstDelta = timedelta(hours=7)
-    currentTime = datetime.now() - pstDelta
-    despawnTime = currentTime + timeRemaining 
-    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
-    await ctx.send("Despawns in {} minutes".format(a))
-    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
- 
-#TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).
-#http://discordpy.readthedocs.io/en/latest/api.html#discord.on_reaction_add
-#@client.event
-#async def on_reaction_add(reaction, user):
-    #client.delete_message(reaction.message)
-
-
-#Quest Reporter ===============================================================================
+  
+#=====================================Quest Reporter ======================================================
+#'-report' => Writes stop, location, quest notes to google sheet
+#'-sheet' => Returns link to google sheet 
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ['CLIENT_SECRET'], scope)
@@ -136,6 +85,54 @@ async def report(ctx, stopName, stopLoc, stopReward):
     await ctx.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
     await ctx.send("Thanks for reporting, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
+#===================================Despawn from minutes until hatch =====================================
+@bot.command()
+async def hatchesin(ctx, a: int):
+    hatchMin = timedelta(minutes=a)
+    raidDuration = timedelta(minutes=45)
+    pstDelta = timedelta(hours=7)
+    currentTime = datetime.now() - pstDelta
+    hatchTime = currentTime + hatchMin
+    despawnTime = currentTime + hatchMin + raidDuration 
+    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
+    await ctx.send("Hatches in {} minutes.".format(a))
+    await ctx.send("Hatches at {:%I:%M%p}".format(hatchTime))
+    #await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
+    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
+
+#====================================Despawn from hatch time =============================================
+@bot.command()
+async def hatchesat(ctx, a):
+    hatchesAt = datetime.strptime(a, "%I:%M%p")
+    raidDuration = timedelta(minutes=45)
+    despawnTime = hatchesAt + raidDuration
+    await ctx.send("Hatches at {:%I:%M%p}".format(hatchesAt))
+    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
+
+#=================================Despawn from time remaining on boss ======================================
+@bot.command()
+async def timeleft(ctx, a: int):
+    timeRemaining = timedelta(minutes=a)
+    pstDelta = timedelta(hours=7)
+    currentTime = datetime.now() - pstDelta
+    despawnTime = currentTime + timeRemaining 
+    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
+    await ctx.send("Despawns in {} minutes".format(a))
+    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
+
+#============================================== Tip =========================================================    
+@bot.command()
+async def tip(ctx, a: float, b: float):
+    c = a*b/100
+    await ctx.send("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), round(c,2)))
+   
+   
+#TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).
+#http://discordpy.readthedocs.io/en/latest/api.html#discord.on_reaction_add
+#@client.event
+#async def on_reaction_add(reaction, user):
+    #client.delete_message(reaction.message)
+
   
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
@@ -159,8 +156,9 @@ async def testexport(ctx):
         for n in myRow:
             writer.writerow([n])
     await bot.send_file(ctx.message.author, 'temp.csv', filename='myrow.csv', content="Check your DMs.")
-                            
-  
+
+    
+    
 #bot.run(str(os.environ.get('BOT_TOKEN')))
 bot.run(bot_token)
 
