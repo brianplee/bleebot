@@ -69,7 +69,8 @@ async def greet(ctx):
 #'-sheet' => Returns link to google sheet 
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ['CLIENT_SECRET'], scope)
+credentials = ServiceAccountCredentials(puts ENV["CLIENT_SECRET"], scope)
+#credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ['CLIENT_SECRET'], scope)
 #credentials = JSON.parse(os.environ['CLIENT_SECRET'])
 gc = gspread.authorize(credentials)
 wksheet = gc.open("QuestReporter").sheet1
