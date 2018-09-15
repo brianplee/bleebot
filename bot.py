@@ -18,7 +18,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
-client_secret = os.environ[CLIENT_SECRET]
+client_secret = os.environ('CLIENT_SECRET', none)
 
 bot = commands.Bot(command_prefix='-')
 
