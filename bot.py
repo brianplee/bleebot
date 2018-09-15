@@ -73,9 +73,24 @@ async def greet(ctx):
 #client_secret = os.environ('CLIENT_SECRET') #TypeError: '_Environ' object is not callable
 #client_secret = os.environ['CLIENT_SECRET'] #creds_type = keyfile_dict.get('type'), AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
-client_secret = str(os.environ.get['CLIENT_SECRET'])
+#client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
+
+CLIENT_SECRET = {
+  "type": "service_account",
+  "project_id": "gymdatabase-215200",
+  "private_key_id": "683bafabe6d2e0fa6f746394f06c4c6c656a655f",
+  "private_key": os.environ['CLIENT_KEY'],
+  "client_email": os.environ['CLIENT_EMAIL'],
+  "client_id": "117441405217429647940",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bleebot%40gymdatabase-215200.iam.gserviceaccount.com"
+}
+
+client_secret = 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
+credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
 gc = gspread.authorize(credentials)
 wksheet = gc.open("QuestReporter").sheet1
 
