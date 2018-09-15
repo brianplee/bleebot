@@ -70,7 +70,7 @@ async def greet(ctx):
 #'-sheet' => Returns link to google sheet 
 #use the _from_parsed_json_keyfile oauth2client method to call hidden client_secrets var with parsed .json contents
 
-client_secret = os.environ.get('CLIENT_SECRET')
+client_secret = os.environ('CLIENT_SECRET')
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
 gc = gspread.authorize(credentials)
