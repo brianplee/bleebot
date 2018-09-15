@@ -72,9 +72,9 @@ async def greet(ctx):
 
 #client_secret = os.environ('CLIENT_SECRET') #TypeError: '_Environ' object is not callable
 #client_secret = os.environ['CLIENT_SECRET'] #creds_type = keyfile_dict.get('type'), AttributeError: 'str' object has no attribute 'get'
-
+client_secret = str(os.environ.get('CLIENT_SECRET'))
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials._from_parsed_json_keyfile(os.environ['CLIENT_SECRET'], scope)
+credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
 gc = gspread.authorize(credentials)
 wksheet = gc.open("QuestReporter").sheet1
 
