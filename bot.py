@@ -71,9 +71,10 @@ async def greet(ctx):
 #use the _from_parsed_json_keyfile oauth2client method to call hidden client_secrets var with parsed .json contents
 
 #client_secret = os.environ('CLIENT_SECRET') #TypeError: '_Environ' object is not callable
-client_secret = os.environ['CLIENT_SECRET']
+#client_secret = os.environ['CLIENT_SECRET'] #creds_type = keyfile_dict.get('type'), AttributeError: 'str' object has no attribute 'get'
+
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
+credentials = ServiceAccountCredentials._from_parsed_json_keyfile(os.environ['CLIENT_SECRET'], scope)
 gc = gspread.authorize(credentials)
 wksheet = gc.open("QuestReporter").sheet1
 
