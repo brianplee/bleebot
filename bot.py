@@ -88,7 +88,6 @@ CLIENT_SECRET = {
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bleebot%40gymdatabase-215200.iam.gserviceaccount.com"
 }
 
-client_secret = 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
 gc = gspread.authorize(credentials)
