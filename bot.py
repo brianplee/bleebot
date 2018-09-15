@@ -80,10 +80,10 @@ async def sheet(ctx):
     await ctx.send("Sheet: <https://www.goo.gl/8h8jdQ>")
 
 async def report(ctx, stopName, stopLoc, stopReward):
-    timeStamp = currentTime = datetime.now() - pstDelta
+    timeStamp = datetime.now() - pstDelta
     formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
     reporterName = discord.Message.author.name
-    await ctx.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
+    await ctx.wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
     await ctx.send("Thanks for reporting, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
 #===================================Despawn from minutes until hatch =====================================
