@@ -67,11 +67,10 @@ async def greet(ctx):
 #=====================================Quest Reporter ======================================================
 #'-report' => Writes stop, location, quest notes to google sheet
 #'-sheet' => Returns link to google sheet 
+#use the _from_parsed_json_keyfile oauth2client method to call hidden client_secrets var with parsed .json contents
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials(os.environ['CLIENT_SECRET'], scope)
-#credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ['CLIENT_SECRET'], scope)
-#credentials = JSON.parse(os.environ['CLIENT_SECRET'])
+credentials = ServiceAccountCredentials._from_parsed_json_keyfile(os.environ.get['CLIENT_SECRET'], scope)
 gc = gspread.authorize(credentials)
 wksheet = gc.open("QuestReporter").sheet1
 
