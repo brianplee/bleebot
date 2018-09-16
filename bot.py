@@ -15,7 +15,6 @@ import os
 import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from boto.s3.connection import S3Connection
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
@@ -76,8 +75,8 @@ async def greet(ctx):
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
-client_key = S3Connection(os.environ['CLIENT_KEY'])
-client_email = S3Connection(os.environ['CLIENT_EMAIL'])
+client_key = os.environ['CLIENT_KEY']
+client_email = os.environ['CLIENT_EMAIL']
 CLIENT_SECRET = {
   "type": "service_account",
   "project_id": "gymdatabase-215200",
