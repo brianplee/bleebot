@@ -76,12 +76,14 @@ async def greet(ctx):
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
+client_key = S3Connection(os.environ['CLIENT_KEY'])
+client_email = S3Connection(os.environ['CLIENT_EMAIL'])
 CLIENT_SECRET = {
   "type": "service_account",
   "project_id": "gymdatabase-215200",
   "private_key_id": "683bafabe6d2e0fa6f746394f06c4c6c656a655f",
-  "private_key": S3Connection(os.environ['CLIENT_KEY']),
-  "client_email": S3Connection(os.environ['CLIENT_EMAIL']),
+  "private_key": client_key,
+  "client_email": client_email,
   "client_id": "117441405217429647940",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
