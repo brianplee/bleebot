@@ -15,6 +15,7 @@ import os
 import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from boto.s3.connection import S3Connection
 
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
@@ -79,8 +80,8 @@ CLIENT_SECRET = {
   "type": "service_account",
   "project_id": "gymdatabase-215200",
   "private_key_id": "683bafabe6d2e0fa6f746394f06c4c6c656a655f",
-  "private_key": os.environ['CLIENT_KEY'],
-  "client_email": os.environ['CLIENT_EMAIL'],
+  "private_key": S3Connection(os.environ['CLIENT_KEY']),
+  "client_email": S3Connection(os.environ['CLIENT_EMAIL']),
   "client_id": "117441405217429647940",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
