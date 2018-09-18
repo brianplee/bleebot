@@ -76,7 +76,7 @@ async def greet(ctx):
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
 @bot.command()
-async def sheet(ctx):
+async def sheet():
     await ctx.send("Sheet: <https://www.goo.gl/8h8jdQ>")
   
 @bot.command()
