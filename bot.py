@@ -103,6 +103,7 @@ async def sheet(ctx):
   
 @bot.command()
 async def report(ctx, stopName, stopLoc, stopReward):
+    pstDelta = timedelta(hours=7)
     timeStamp = datetime.now() - pstDelta
     formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
     reporterName = discord.Message.author.name
