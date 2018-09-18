@@ -103,7 +103,8 @@ async def report(ctx, stopName, stopLoc, stopReward):
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").sheet1
    pstDelta = timedelta(hours=7)
-   timeStamp = datetime.now() - pstDelta    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
+   timeStamp = datetime.now() - pstDelta    
+   formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
    reporterName = discord.Message.author
    await ctx.wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
    await ctx.send("Thanks for reporting, " + reporterName + "!  Type '-sheet' to see today's quests.")
