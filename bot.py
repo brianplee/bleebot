@@ -106,7 +106,7 @@ async def report(ctx, stopName, stopLoc, stopReward):
     pstDelta = timedelta(hours=7)
     timeStamp = datetime.now() - pstDelta
     formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
-    reporterName = discord.Message.author.name
+    reporterName = discord.Message.author
     await ctx.wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
     await ctx.send("Thanks for reporting, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
