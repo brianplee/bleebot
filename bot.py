@@ -77,7 +77,7 @@ async def greet(ctx):
 
 @bot.command()
 async def sheet():
-    await ctx.send("Sheet: <https://www.goo.gl/8h8jdQ>")
+    await send("Sheet: <https://www.goo.gl/8h8jdQ>")
   
 @bot.command()
 async def report(ctx, stopName, stopLoc, stopReward):
