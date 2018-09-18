@@ -77,7 +77,7 @@ async def greet():
 
 @bot.command()
 async def sheet():
-    await bot.send("Sheet: <https://www.goo.gl/8h8jdQ>")
+    await send("Sheet: <https://www.goo.gl/8h8jdQ>")
   
 @bot.command()
 async def report(stopName, stopLoc, stopReward):
@@ -107,7 +107,7 @@ async def report(stopName, stopLoc, stopReward):
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
    reporterName = discord.Message.author
    #wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
-   await bot.send_message("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
+   await send("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
