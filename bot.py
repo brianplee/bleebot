@@ -36,17 +36,17 @@ async def on_ready():
 #ctx = context
 
 @bot.command()
-async def info():
+async def info(ctx):
     embed = discord.Embed(title="BleeBot", description="Because math is hard.", color=0xeee657)
     embed.add_field(name="Author", value="bleeinyourself")
     embed.add_field(name="Server Count", value=f"{len(bot.guilds)}")
     embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
-    await client.send(embed=embed)
+    await ctx.send(embed=embed)
 
 #bot.remove_command('help')
 
 @bot.command()
-async def guide():
+async def guide(ctx):
     embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-guide", value="Gives this message", inline=False)
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
@@ -56,13 +56,13 @@ async def guide():
     embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
     embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report ", inline=False)
-    await client.send(embed=embed)
+    await ctx.send(embed=embed)
   
 
 #http://www.fileformat.info/info/emoji/list.htm
 @bot.command()
-async def greet():
-    await client.send(":smiley: :wave: Hi.  I am Bleebot.")
+async def greet(ctx):
+    await ctx.send(":smiley: :wave: Hi.  I am Bleebot.")
 
   
 #=====================================Quest Reporter ======================================================
@@ -76,11 +76,11 @@ async def greet():
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
 @bot.command()
-async def sheet():
-    await send("Sheet: <https://www.goo.gl/8h8jdQ>")
+async def sheet(ctx):
+    await ctx.send("Sheet: <https://www.goo.gl/8h8jdQ>")
   
 @bot.command()
-async def report(stopName, stopLoc, stopReward):
+async def report(ctx, stopName, stopLoc, stopReward):
    client_key = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCZ3LW+8miTEMY0\n3Bh03uINLulMHJsOEem+a9xPlrQMlh6RsCTcOGjVyOQ298WGRBD4JW9shdqpBk60\noXnyYc7bEZ8FI2K6H/0iYul6uahxv9NIsAAmm7PhTvSZf2yxzOSyZ+AO4y7ToCUw\n66OkQOub9w49lJJzVhuwf0SAgasUGiS6U6ZgvaVYHsaCHEoUOnYNxJ/7npR3ub+e\nJqDPGCvZd8+CgPNYXaMJ5chjzVlxB5/pib5xyYohtdaiZBdA+6buVLn3wVvbR7iL\nqPq1VHX9dR74Fr4Y3z0TKM0xjON7WOOA2X9a+EsXh5OCbNJAdyOAdgzjUNgrmhVD\nCngkBamNAgMBAAECggEAEDQ0V9XDualMloiPcs9+UxEbtM5Wbhbo3QsS+rbOY3zz\n3zgDycWPFOTBVCCoBsnoV5npsC4wpxho9ZED/MjcNioW6z2cyilQSWzNVgVzffdL\n0x3mBirjuNjN3dSTp+4CL9/MswSuC8+T2yEV7NiBd71/HHEnM0pgRChDGJ2PXOBy\nFXCw+2rzYc0g/8+0cssE+LfTtyqQmq2AOkSHymOmUcuayLZNMTxodspdMC/+L369\nU4ATV20NOEyCkLY5mUFABJJ1CbItlXTG3sXcckVowUtuf+Q7Hh2WreyDm56R6ceq\nCPQ7yhJLn6FvL17xs6MUTQIRvgNLmDvMfYPiRefYaQKBgQDT0FW8eWyYxGm4xIt+\nsHQ6nBGEIvar0yhQYfI9auWSx6iZ0gVUa6o7ysNJ6CNyVWgQX3ISuvGx30eCmrKA\n6XPl/yDuwuZa5Io8vGfHIcTNDte/Rb4o2gslqOJK5j8uXfpUlE0h47p3fW2KKoiF\ngn7vBDZrrq5KuzCBWDRW4NF5gwKBgQC59YkP9GABDQyO2v1P7vVYm28kfRsL+zVE\ng+jxkCJAcYGYMMbFJSrrsKz91QIqL9cqkdRbZO6rLml5ckNXmo8M5xlTUtqV3AWA\nbO/teFeKatyVgNcGW/SgqzbMxG9nNhZi/FbHT7MeYSpTfq8SafedJu0ctu7mU24T\ndemlwh+zrwKBgF4DzdpPRv1zyL1DN+tupNhS549v+W8A1ZcAMoZCSU3iIxrLVqRG\n+ZN6hz3ptLoN4JfL1ZUstxTNVy9IPMztUg0XNeXkSlyzrgwRUDrZ6UFfQjHa4fG9\n/k6j7HV0RzzsZ61c+fN94gkhehpmkJw59N9gTktziFcRSRFQNkMNnMzDAoGAJPMS\nvubRxKOxIRmGR8G1YlvQI7HwE9tgZDLJsGXxSFjFZVYbyMRv2NEMLouKmJNU75J2\nXYqamczpDEaV9uwxDGFG+PV3lVtYhIIg0lCdJFXDarllAFB5NQuQIfPOJvXqUNTO\n8V92ucyYumprov8HQmSfrJr0sTNWpetB97uwzOUCgYEA0VYMCCZKEIua/3N3fbD1\nTtKiMfa8rBrewoHlXdwTsjl2lCoTB2r6f3QAD+5suX2NrKuvROEDecp2N7yGeqYC\nOBRR28S9Wwx0VfsJsbTdu/z17uV9TRorddGR6I0YPyfoWhpefnji22Z0Am8UiCR6\nQqVEzkRcrCTIIUczx1mz47Y=\n-----END PRIVATE KEY-----\n"
    client_email = "bleebot@gymdatabase-215200.iam.gserviceaccount.com"
    #client_key = os.environ['CLIENT_KEY']
@@ -105,9 +105,9 @@ async def report(stopName, stopLoc, stopReward):
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
-   reporterName = discord.Message.author
+   reporterName = Context.author
    #wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
-   await send("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
+   await ctx.send("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
