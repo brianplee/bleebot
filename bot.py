@@ -95,7 +95,7 @@ CLIENT_SECRET = {
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
 gc = gspread.authorize(credentials)
-wksheet = gc.open("QuestReporter").sheet1
+wksheet = gc.open("QuestReport").sheet1
 
 @bot.command()
 async def sheet(ctx):
