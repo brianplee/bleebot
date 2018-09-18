@@ -95,7 +95,7 @@ CLIENT_SECRET = {
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
 gc = gspread.authorize(credentials)
-wksheet = gc.open("QuestReport").sheet1
+
 
 @bot.command()
 async def sheet(ctx):
@@ -103,6 +103,7 @@ async def sheet(ctx):
   
 @bot.command()
 async def report(ctx, stopName, stopLoc, stopReward):
+    wksheet = gc.open("QuestReport").sheet1
     pstDelta = timedelta(hours=7)
     timeStamp = datetime.now() - pstDelta
     formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
