@@ -100,7 +100,8 @@ wksheet = gc.open("QuestReport").sheet1
 @bot.command()
 async def sheet(ctx):
     await ctx.send("Sheet: <https://www.goo.gl/8h8jdQ>")
-
+  
+@bot.command()
 async def report(ctx, stopName, stopLoc, stopReward):
     timeStamp = datetime.now() - pstDelta
     formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
