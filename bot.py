@@ -75,6 +75,16 @@ async def greet():
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
+@client.event
+async def on_message(message):
+    # we do not want the bot to reply to itself
+    if message.author == discord.Client().user:
+        return
+
+    if message.content.startswith('!hello'):
+        msg = 'Hello {0.author.mention}'.format(message)
+        await discord.Client().send_message(message.channel, msg)
+       
 @bot.command()
 async def sheet():
     await bot.say("Here are today's reported quests: <https://www.goo.gl/8h8jdQ>")
@@ -106,9 +116,9 @@ async def report(stopName, stopLoc, stopReward):
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
    reporterName = discord.Member
-   #wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
+   return wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
-   await bot.say("Thanks for reporting the quest, {0.name}!  Type '-sheet' to see today's quests.".format(reporterName))
+   #await bot.say("Thanks for reporting the quest, {0.name}!".format(reporterName)) #<member 'name' of 'User' objects>
   
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
