@@ -36,7 +36,7 @@ async def on_ready():
 
 @bot.command()
 async def info():
-    embed = discord.Embed(title="BleeBot", description="Because math is hard.", color=0xeee657)
+    embed = discord.Embed(title="QuestBot", description="I need quest reports to stay alive.", color=0xeee657)
     embed.add_field(name="Author", value="bleeinyourself")
     embed.add_field(name="Server Count", value=f"{len(bot.guilds)}")
     embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
@@ -49,10 +49,6 @@ async def guide():
     embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-guide", value="Gives this message", inline=False)
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
-    embed.add_field(name="-tip", value="Calculates your tip.  Ex) -tip 20.00 18", inline=False)
-    embed.add_field(name="-hatchesin", value="Gives the hatch time and despawn time given minutes left until hatch.  Ex) -hatchesin 45", inline=False)
-    embed.add_field(name="-hatchesat", value="Gives the despawn time given the hatch time.  Ex) -hatchesat 09:30am", inline=False)
-    embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
     embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report Doyle Park, 61st and hollis, Spinda", inline=False)
     await bot.say(embed=embed)
@@ -107,7 +103,7 @@ async def report(stopInfo:str):
    formattedTimeStamp = "{:%m/%d %I:%M%p}".format(timeStamp)
    reporterName = str(discord.Message.author)
    stopName, stopLoc, stopReward = stopInfo.split(",")
-   wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
+   wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
 
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
    await bot.say("Thanks for reporting the quest!  Type '-sheet' to see today's quests.")
