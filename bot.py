@@ -105,9 +105,10 @@ async def report(stopName, stopLoc, stopReward):
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
-   reporterName = str(discord.Message.author.nick)
+   reporterName = discord.Member
    #wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
-   await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
+   #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
+   await bot.say("Thanks for reporting the quest, {0.name}!  Type '-sheet' to see today's quests.".format(reporterName))
   
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
