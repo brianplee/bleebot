@@ -36,17 +36,17 @@ async def on_ready():
 #ctx = context
 
 @bot.command()
-async def info(ctx):
+async def info():
     embed = discord.Embed(title="BleeBot", description="Because math is hard.", color=0xeee657)
     embed.add_field(name="Author", value="bleeinyourself")
     embed.add_field(name="Server Count", value=f"{len(bot.guilds)}")
     embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
-    await ctx.send(embed=embed)
+    await bot.say(embed=embed)
 
 #bot.remove_command('help')
 
 @bot.command()
-async def guide(ctx):
+async def guide():
     embed = discord.Embed(title="List of commands:")
     embed.add_field(name="-guide", value="Gives this message", inline=False)
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
@@ -56,13 +56,13 @@ async def guide(ctx):
     embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
     embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report ", inline=False)
-    await ctx.send(embed=embed)
+    await bot.say(embed=embed)
   
 
 #http://www.fileformat.info/info/emoji/list.htm
 @bot.command()
-async def greet(ctx):
-    await ctx.send(":smiley: :wave: Hi.  I am Bleebot.")
+async def greet():
+    await bot.say(":smiley: :wave: Hi.  I am Bleebot.")
 
   
 #=====================================Quest Reporter ======================================================
@@ -77,10 +77,10 @@ async def greet(ctx):
 
 @bot.command()
 async def sheet():
-    await send("Sheet: <https://www.goo.gl/8h8jdQ>")
+    await bot.say("Here are today's quests: <https://www.goo.gl/8h8jdQ>")
   
 @bot.command()
-async def report(ctx, stopName, stopLoc, stopReward):
+async def report(stopName, stopLoc, stopReward):
    client_key = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCZ3LW+8miTEMY0\n3Bh03uINLulMHJsOEem+a9xPlrQMlh6RsCTcOGjVyOQ298WGRBD4JW9shdqpBk60\noXnyYc7bEZ8FI2K6H/0iYul6uahxv9NIsAAmm7PhTvSZf2yxzOSyZ+AO4y7ToCUw\n66OkQOub9w49lJJzVhuwf0SAgasUGiS6U6ZgvaVYHsaCHEoUOnYNxJ/7npR3ub+e\nJqDPGCvZd8+CgPNYXaMJ5chjzVlxB5/pib5xyYohtdaiZBdA+6buVLn3wVvbR7iL\nqPq1VHX9dR74Fr4Y3z0TKM0xjON7WOOA2X9a+EsXh5OCbNJAdyOAdgzjUNgrmhVD\nCngkBamNAgMBAAECggEAEDQ0V9XDualMloiPcs9+UxEbtM5Wbhbo3QsS+rbOY3zz\n3zgDycWPFOTBVCCoBsnoV5npsC4wpxho9ZED/MjcNioW6z2cyilQSWzNVgVzffdL\n0x3mBirjuNjN3dSTp+4CL9/MswSuC8+T2yEV7NiBd71/HHEnM0pgRChDGJ2PXOBy\nFXCw+2rzYc0g/8+0cssE+LfTtyqQmq2AOkSHymOmUcuayLZNMTxodspdMC/+L369\nU4ATV20NOEyCkLY5mUFABJJ1CbItlXTG3sXcckVowUtuf+Q7Hh2WreyDm56R6ceq\nCPQ7yhJLn6FvL17xs6MUTQIRvgNLmDvMfYPiRefYaQKBgQDT0FW8eWyYxGm4xIt+\nsHQ6nBGEIvar0yhQYfI9auWSx6iZ0gVUa6o7ysNJ6CNyVWgQX3ISuvGx30eCmrKA\n6XPl/yDuwuZa5Io8vGfHIcTNDte/Rb4o2gslqOJK5j8uXfpUlE0h47p3fW2KKoiF\ngn7vBDZrrq5KuzCBWDRW4NF5gwKBgQC59YkP9GABDQyO2v1P7vVYm28kfRsL+zVE\ng+jxkCJAcYGYMMbFJSrrsKz91QIqL9cqkdRbZO6rLml5ckNXmo8M5xlTUtqV3AWA\nbO/teFeKatyVgNcGW/SgqzbMxG9nNhZi/FbHT7MeYSpTfq8SafedJu0ctu7mU24T\ndemlwh+zrwKBgF4DzdpPRv1zyL1DN+tupNhS549v+W8A1ZcAMoZCSU3iIxrLVqRG\n+ZN6hz3ptLoN4JfL1ZUstxTNVy9IPMztUg0XNeXkSlyzrgwRUDrZ6UFfQjHa4fG9\n/k6j7HV0RzzsZ61c+fN94gkhehpmkJw59N9gTktziFcRSRFQNkMNnMzDAoGAJPMS\nvubRxKOxIRmGR8G1YlvQI7HwE9tgZDLJsGXxSFjFZVYbyMRv2NEMLouKmJNU75J2\nXYqamczpDEaV9uwxDGFG+PV3lVtYhIIg0lCdJFXDarllAFB5NQuQIfPOJvXqUNTO\n8V92ucyYumprov8HQmSfrJr0sTNWpetB97uwzOUCgYEA0VYMCCZKEIua/3N3fbD1\nTtKiMfa8rBrewoHlXdwTsjl2lCoTB2r6f3QAD+5suX2NrKuvROEDecp2N7yGeqYC\nOBRR28S9Wwx0VfsJsbTdu/z17uV9TRorddGR6I0YPyfoWhpefnji22Z0Am8UiCR6\nQqVEzkRcrCTIIUczx1mz47Y=\n-----END PRIVATE KEY-----\n"
    client_email = "bleebot@gymdatabase-215200.iam.gserviceaccount.com"
    #client_key = os.environ['CLIENT_KEY']
@@ -105,50 +105,50 @@ async def report(ctx, stopName, stopLoc, stopReward):
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
-   reporterName = Context.author
+   reporterName = discord.Message.author
    #wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
-   await ctx.send("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
+   await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
-async def hatchesin(ctx, a: int):
+async def hatchesin(a: int):
     hatchMin = timedelta(minutes=a)
     raidDuration = timedelta(minutes=45)
     pstDelta = timedelta(hours=7)
     currentTime = datetime.now() - pstDelta
     hatchTime = currentTime + hatchMin
     despawnTime = currentTime + hatchMin + raidDuration 
-    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
-    await ctx.send("Hatches in {} minutes.".format(a))
-    await ctx.send("Hatches at {:%I:%M%p}".format(hatchTime))
+    await bot.say("Reported at {:%I:%M%p}".format(currentTime))
+    await bot.say("Hatches in {} minutes.".format(a))
+    await bot.say("Hatches at {:%I:%M%p}".format(hatchTime))
     #await ctx.send("Despawns at: {}:{}".format("{0:0=2d}".format(despawnTime.hour), "{0:0=2d}".format(despawnTime.minute)))
-    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
+    await bot.say("Despawns at {:%I:%M%p}".format(despawnTime))
 
 #====================================Despawn from hatch time =============================================
 @bot.command()
-async def hatchesat(ctx, a):
+async def hatchesat(a):
     hatchesAt = datetime.strptime(a, "%I:%M%p")
     raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
-    await ctx.send("Hatches at {:%I:%M%p}".format(hatchesAt))
-    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
+    await bot.say("Hatches at {:%I:%M%p}".format(hatchesAt))
+    await bot.say("Despawns at {:%I:%M%p}".format(despawnTime))
 
 #=================================Despawn from time remaining on boss ======================================
 @bot.command()
-async def timeleft(ctx, a: int):
+async def timeleft(a: int):
     timeRemaining = timedelta(minutes=a)
     pstDelta = timedelta(hours=7)
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
-    await ctx.send("Reported at {:%I:%M%p}".format(currentTime))
-    await ctx.send("Despawns in {} minutes".format(a))
-    await ctx.send("Despawns at {:%I:%M%p}".format(despawnTime))
+    await bot.say("Reported at {:%I:%M%p}".format(currentTime))
+    await bot.say("Despawns in {} minutes".format(a))
+    await bot.say("Despawns at {:%I:%M%p}".format(despawnTime))
 
 #============================================== Tip =========================================================    
 @bot.command()
-async def tip(ctx, a: float, b: float):
+async def tip(a: float, b: float):
     c = a*b/100
-    await ctx.send("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), round(c,2)))
+    await bot.say("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), round(c,2)))
    
    
 #TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).
@@ -161,25 +161,7 @@ async def tip(ctx, a: float, b: float):
 #TO DO: MemberExporter ========================================================================
     #export list of members with team affliation to csv
     #page 482 in python library - csv module 
-@bot.command()
-async def exportmembers(ctx):
-    await bot.request_offline_members(ctx.message.server) 
-    memberNames = [m.display_name for m in ctx.message.server.members]  #obtains members of server where command was entered
-    nameColors = [n.display_name.colour for n in ctx.message.server.members]
-    with open('memberlist.csv', mode='w', encoding='utf-8', newline='') as f:
-        writer = csv.writer(f, dialect='excel')
-        for v in memberNames:     #iterates through list to create a new row for each name
-            writer.writerow([v])  #if by itself without for-loop, would create columns for each name
-    await bot.send_file(ctx.message.author, 'temp.csv', filename='memberlist.csv', content="Check your DM for the csv!")
-  
-@bot.command()
-async def testexport(ctx):
-    myRow = ['a', 'b', 'c']
-    with open('temp.csv', mode='w', encoding='utf-8', newline='') as f:
-        writer = csv.writer(f, dialect='excel')
-        for n in myRow:
-            writer.writerow([n])
-    await bot.send_file(ctx.message.author, 'temp.csv', filename='myrow.csv', content="Check your DMs.")
+
 
     
     
