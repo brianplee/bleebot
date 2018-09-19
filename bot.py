@@ -107,7 +107,7 @@ async def report(ctx, stopInfo:str):
 #{ctx.message.author.mention}
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
    await bot.say("Thanks for reporting the quest!  Type '-sheet' to see today's quests.")
-   await ctx.message.add_reaction(emoji="✔")
+   #await ctx.message.add_reaction(emoji="✔")
    
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
