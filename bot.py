@@ -33,7 +33,6 @@ async def on_ready():
 #usually after bot's login is successful
 #===============================================================================
 #Bot functions to invoke commands
-#ctx = context
 
 @bot.command()
 async def info():
@@ -55,7 +54,7 @@ async def guide():
     embed.add_field(name="-hatchesat", value="Gives the despawn time given the hatch time.  Ex) -hatchesat 09:30am", inline=False)
     embed.add_field(name="-timeleft", value="Gives the despawn time given minutes left until despawn.  Ex) -timeleft 45", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
-    embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report ", inline=False)
+    embed.add_field(name="-report", value="Report quests from Pokestops as follows: -report stop, location, quest notes  Ex) -report Doyle Park, 61st and hollis, Spinda", inline=False)
     await bot.say(embed=embed)
   
 
