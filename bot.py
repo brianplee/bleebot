@@ -74,16 +74,16 @@ async def greet():
 #client_secret = os.environ['CLIENT_SECRET'] #creds_type = keyfile_dict.get('type'), AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
-
-@discord.Client.event
+client = discord.Client()
+@client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
-    if message.author == discord.Client.user:
+    if message.author == client.user:
         return
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
-        await discord.Client.send_message(message.channel, msg)
+        await client.send_message(message.channel, msg)
        
 @bot.command()
 async def sheet():
