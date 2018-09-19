@@ -104,9 +104,9 @@ async def report(ctx, stopInfo:str):
    reporterName = str(discord.Message.author)
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
-
+#{ctx.message.author.mention}
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
-   await bot.say("Thanks for reporting the quest {ctx.message.author.mention}!  Type '-sheet' to see today's quests.")
+   await bot.say("Thanks for reporting the quest!  Type '-sheet' to see today's quests.")
    await ctx.message.add_reaction(emoji="✔")
    
 #===================================Despawn from minutes until hatch =====================================
