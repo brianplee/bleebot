@@ -104,7 +104,7 @@ async def report(stopName, stopLoc, stopReward):
    wksheet = gc.open("QuestReport").sheet1
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
-   formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
+   formattedTimeStamp = "{:%m/%d %I:%M%p}".format(timeStamp)
    reporterName = str(discord.Message.author)
    wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
    await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
