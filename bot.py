@@ -75,7 +75,7 @@ async def greet():
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
-@client.event
+@discord.Client().event
 async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == discord.Client().user:
