@@ -74,16 +74,7 @@ async def greet():
 #client_secret = os.environ['CLIENT_SECRET'] #creds_type = keyfile_dict.get('type'), AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
-client = discord.Client()
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
 
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
        
 @bot.command()
 async def sheet():
@@ -107,7 +98,6 @@ async def report(stopName, stopLoc, stopReward):
      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
      "client_x509_cert_url": os.environ['CLIENT_X509']
    }
-
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
    gc = gspread.authorize(credentials)
@@ -116,7 +106,7 @@ async def report(stopName, stopLoc, stopReward):
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
    reporterName = discord.Member
-   return wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
+   wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
    #await bot.say("Thanks for reporting the quest, {0.name}!".format(reporterName)) #<member 'name' of 'User' objects>
   
