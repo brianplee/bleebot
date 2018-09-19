@@ -77,7 +77,7 @@ async def greet():
 
 @bot.command()
 async def sheet():
-    await bot.say("Here are today's quests: <https://www.goo.gl/8h8jdQ>")
+    await bot.say("Here are today's reported quests: <https://www.goo.gl/8h8jdQ>")
   
 @bot.command()
 async def report(stopName, stopLoc, stopReward):
@@ -105,7 +105,7 @@ async def report(stopName, stopLoc, stopReward):
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%m-%d %I:%M%p}".format(timeStamp)
-   reporterName = discord.Message.author
+   reporterName = str(discord.Message.author.ID)
    #wksheet.append_row([stopName, stopLoc, stopReward, reporterName, formattedTimeStamp])
    await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
   
