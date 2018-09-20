@@ -106,7 +106,7 @@ async def report(ctx, stopInfo:str):
    wksheet.append_row([str(stopName), str(stopLoc), str(stopReward), formattedTimeStamp])
 #{ctx.message.author.mention}
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
-   await bot.say("Thanks for reporting the quest!  Type '-sheet' to see today's quests.")
+   await ctx.bot.reply("thanks for reporting the quest!  Type '-sheet' (without quotes) to see today's quests.")
    #await ctx.message.add_reaction(emoji="✔")
    
 #===================================Despawn from minutes until hatch =====================================
