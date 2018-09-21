@@ -50,7 +50,7 @@ async def guide():
     embed.add_field(name="-guide", value="Gives this message", inline=False)
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
-    embed.add_field(name="-report", value="Report quests from Pokestops as follows: \n-report ""<pokestop name>, <pokestop location>, <quest notes>"" \nEx) -report ""Doyle Park, 61st and hollis, Spinda"" \nAll 3 parameters are required.  \nPlease wrap the report in quotes! \nPlease separate each parameter with a comma, and do not use commas within a single parameter.", inline=False)
+    embed.add_field(name="-report", value='Report quests from Pokestops as follows: \n-report "<pokestop name>, <pokestop location>, <quest notes>" \nEx) -report "Doyle Park, 61st and hollis, Spinda" \nAll 3 parameters are required. \nPlease wrap the report in double quotes! \nSeparate each parameter with a comma, and do not use commas within a single parameter.', inline=False)
     await bot.say(embed=embed)
   
 
@@ -103,7 +103,7 @@ async def report(ctx, stopInfo:str):
    formattedTimeStamp = "{:%m/%d %I:%M%p}".format(timeStamp)
    reporterName = str(discord.Message.author)
    stopName, stopLoc, stopReward = stopInfo.split(",")
-   wksheet.append_row([str(stopName), str(stopLoc), str(stopReward), formattedTimeStamp])
+   wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
 #{ctx.message.author.mention}
    #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
    await ctx.bot.reply("thanks for reporting the quest!  Type '-sheet' to see today's quests.")
