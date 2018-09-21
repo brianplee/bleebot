@@ -45,9 +45,9 @@ async def info():
 #bot.remove_command('help')
 
 @bot.command()
-async def guide():
+async def questbot():
     embed = discord.Embed(title="List of commands:")
-    embed.add_field(name="-guide", value="Gives this message", inline=False)
+    embed.add_field(name="-questbot", value="Gives this message", inline=False)
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
     embed.add_field(name="-report", value='Report quests from Pokestops as follows: \n-report "<pokestop name>, <pokestop location>, <quest notes>" \nEx) -report "Doyle Park, 61st and hollis, hatch 5 eggs for Chansey" \nAll 3 parameters are required. \nPlease wrap the report in double quotes! \nSeparate each parameter with a comma, and do not use commas within a single parameter.', inline=False)
