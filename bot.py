@@ -50,7 +50,7 @@ async def guide():
     embed.add_field(name="-guide", value="Gives this message", inline=False)
     embed.add_field(name="-info", value="Gives info about this bot, including an invite link", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets with stops, quests, and map links.", inline=False)
-    embed.add_field(name="-report", value="Report quests from Pokestops as follows: \n-report <pokestop name>, <pokestop location>, <quest notes> \nEx) -report Doyle Park, 61st and hollis, Spinda \nAll 3 parameters are required.  Please separate each parameter with a comma, and do not use commas within parameters.", inline=False)
+    embed.add_field(name="-report", value="Report quests from Pokestops as follows: \n-report ""<pokestop name>, <pokestop location>, <quest notes>"" \nEx) -report ""Doyle Park, 61st and hollis, Spinda"" \nAll 3 parameters are required.  \nPlease wrap the report in quotes! \nPlease separate each parameter with a comma, and do not use commas within a single parameter.", inline=False)
     await bot.say(embed=embed)
   
 
