@@ -53,7 +53,7 @@ async def questbot():
     #embed.add_field(name="-hatchesat", value="-hatchesat HH:MMpm/am \nEx) -hatchesat 3:30pm", inline=False)    
     #embed.add_field(name="-timeleft", value="-timeleft minutes \nEx) -timeleft 56", inline=False)
     embed.add_field(name="-sheet", value="Gives the google sheets link with reported quests", inline=False)
-    embed.add_field(name="-report", value='-report "<pokestop name>, <pokestop location>, <quest notes>" \nEx) -report "Doyle Park, 61st and hollis, hatch 5 eggs for Chansey" \nAll 3 parameters are required. \nPlease wrap the report in double quotes! \nSeparate each parameter with a comma, and do not use commas within a single parameter.', inline=False)
+    embed.add_field(name="-report", value='-report "<pokestop name>, <pokestop location>, <quest notes>" \n\nEx) -report "Doyle Park, 61st and hollis, hatch 5 eggs for Chansey" \n\nAll 3 parameters are required. \n\nPlease wrap the entire report in double quotes! \n\nSeparate each parameter with a comma, and do not use commas within a single parameter.', inline=False)
     await bot.say(embed=embed)
   
 
