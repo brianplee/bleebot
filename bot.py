@@ -34,7 +34,7 @@ async def on_ready():
 #===============================================================================
 #Bot functions to invoke commands
 
-@bot.command()
+@bot.command(), 
 async def info():
     embed = discord.Embed(title="QuestBot", description="I need quest reports to stay alive.", color=0xeee657)
     embed.add_field(name="Author", value="bleeinyourself")
