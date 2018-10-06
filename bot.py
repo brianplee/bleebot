@@ -116,7 +116,7 @@ async def report(ctx, *, stopInfo):
 @bot.command()
 async def hatchesin(a: int):
     hatchMin = timedelta(minutes=a)
-    raidDuration = timedelta(minutes=90)
+    raidDuration = timedelta(minutes=45)
     pstDelta = timedelta(hours=7)
     currentTime = datetime.now() - pstDelta
     hatchTime = currentTime + hatchMin
@@ -131,7 +131,7 @@ async def hatchesin(a: int):
 @bot.command()
 async def hatchesat(a):
     hatchesAt = datetime.strptime(a, "%I:%M%p")
-    raidDuration = timedelta(minutes=90)
+    raidDuration = timedelta(minutes=45)
     despawnTime = hatchesAt + raidDuration
     await bot.say("Hatches at {:%I:%M%p}".format(hatchesAt))
     await bot.say("Despawns at {:%I:%M%p}".format(despawnTime))
