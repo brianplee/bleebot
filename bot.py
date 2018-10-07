@@ -106,7 +106,7 @@ async def report(ctx, *, stopInfo):
    wksheet = gc.open("QuestReport").sheet1
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
-   formattedTimeStamp = "{:%m/%d %I:%M%p}".format(timeStamp)
+   formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)
    reporterName = str(discord.Message.author)
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
