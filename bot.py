@@ -1,8 +1,3 @@
- 
-#Locally: CMD ->pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
-#Declare dependents on Heroku: git+https://github.com/Rapptz/discord.py@rewrite VERSION 1
-#git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py[voice]
-
 import datetime
 from datetime import time
 from datetime import datetime
@@ -29,8 +24,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-#on_ready() called when the client is done preparing data received from Discord
-#usually after bot's login is successful
+
 #===============================================================================
 #Bot functions to invoke commands
 
@@ -41,8 +35,6 @@ async def info():
     #embed.add_field(name="Server Count", value=f"{len(bot.guilds)}")
     embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
     await bot.say(embed=embed)
-
-#bot.remove_command('help')
 
 @bot.command()
 async def questbot():
@@ -56,7 +48,6 @@ async def questbot():
     embed.add_field(name="-report", value='-report <pokestop name>, <pokestop location>, <quest notes> \n\nEx) -report Doyle Park, 61st and hollis, hatch 5 eggs for Chansey \n\nAll 3 parameters are required.  \n\nPlease separate each parameter with a comma. \n\nDo not use commas within a single parameter.', inline=False)
     await bot.say(embed=embed)
   
-
 #http://www.fileformat.info/info/emoji/list.htm
 @bot.command()
 async def greet():
@@ -67,7 +58,6 @@ async def greet():
 #=====================================Google Sheets ======================================================
 #client_secret = os.environ('CLIENT_SECRET') #TypeError: '_Environ' object is not callable
 #client_secret = os.environ['CLIENT_SECRET'] #creds_type = keyfile_dict.get('type'), AttributeError: 'str' object has no attribute 'get'
-#client_secret = str(os.environ.get('CLIENT_SECRET')) #AttributeError: 'str' object has no attribute 'get'
 #client_secret = str(os.environ.get['CLIENT_SECRET']) #TypeError: 'method' object is not subscriptable
 
 #CAN'T CALL KEY FROM CONFIG VAR SO SCREW IT HERE IT IS.
@@ -107,13 +97,14 @@ async def report(ctx, *, stopInfo):
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)
-   reporterName = str(discord.Message.author)
+   reporterName = str(discord.Message.author)  #returns location is register(?), not the name.  name attribute doesn't exist anymore?  
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
-#{ctx.message.author.mention}
-   #await bot.say("Thanks for reporting the quest, " + reporterName + "!  Type '-sheet' to see today's quests.")
-   await ctx.bot.reply("thanks for reporting the quest!  Here are today's quests: <https://www.goo.gl/8h8jdQ>.")
+   #{ctx.message.author.mention}
+   #await bot.say("Thanks for reporting the quest, {}!  Type '-sheet' to see today's quests.".format(reporterName))
+   #await ctx.bot.reply("thanks for reporting the quest!  Here are today's quests: <https://www.goo.gl/8h8jdQ>.")
    #await ctx.message.add_reaction(emoji="✔")
+   #await ctx.Client.add_reaction(emoji="✅")
    
 #===================================Clear Quest Sheet =====================================
 @bot.command()
@@ -131,7 +122,7 @@ async def clearsheet():
        quest_date = datetime.strptime(quest_timestamp, '%Y/%m/%d %I:%M%p').date()
        if quest_timestamp is not None and quest_date != current_time_date:
            wksheet.delete_row(r)
-   await bot.say("The quests from yesterday have been cleared.  Today's quests, if any, are still in the sheet.")
+   await bot.say("The quests from yesterday have been cleared.  Today's quests, if there were any, are still in the sheet.")
 
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
@@ -181,10 +172,7 @@ async def tip(a: float, b: float):
 #async def on_reaction_add(reaction, user):
     #client.delete_message(reaction.message)
 
-  
-#TO DO: MemberExporter ========================================================================
-    #export list of members with team affliation to csv
-    #page 482 in python library - csv module 
+ 
 
 
     
