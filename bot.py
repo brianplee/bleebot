@@ -103,8 +103,7 @@ async def report(ctx, *, stopInfo):
    #{ctx.message.author.mention}
    #await bot.say("Thanks for reporting the quest, {}!  Type '-sheet' to see today's quests.".format(reporterName))
    #await ctx.bot.reply("thanks for reporting the quest!  Here are today's quests: <https://www.goo.gl/8h8jdQ>.")
-   #await ctx.message.add_reaction(emoji="✔")
-   #await ctx.Client.add_reaction(emoji="✅")
+   #discord.Client.add_reaction(ctx, discord.Message.content, emoji="✅")
    
 #===================================Clear Quest Sheet =====================================
 @bot.command()
