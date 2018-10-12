@@ -97,13 +97,13 @@ async def report(ctx, *, stopInfo):
    pstDelta = timedelta(hours=7)
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)
-   reporterName = str(discord.Message.author)  #returns location is register(?), not the name.  name attribute doesn't exist anymore?  
+   reporterName = str(discord.Message.author)  #returns location in register(?), not the name.  name attribute doesn't exist anymore?  
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
    #{ctx.message.author.mention}
-   #await bot.say("Thanks for reporting the quest, {}!  Type '-sheet' to see today's quests.".format(reporterName))
    #await ctx.bot.reply("thanks for reporting the quest!  Here are today's quests: <https://www.goo.gl/8h8jdQ>.")
-   #discord.Client.add_reaction(ctx, discord.Message(content=""), emoji="✅")
+   #discord.Client.add_reaction(ctx, ctx.message, emoji="✅")
+   #emoji="white_check_mark:"
    
 #===================================Clear Quest Sheet =====================================
 @bot.command()
