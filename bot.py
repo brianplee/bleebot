@@ -100,8 +100,8 @@ async def report(ctx, *, stopInfo):
    reporterName = str(discord.Message.author)  #returns location in register(?), not the name.  name attribute doesn't exist anymore?  
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
+   await ctx.bot.add_reaction(ctx.message, emoji="✅")
    #{ctx.message.author.mention}
-   #await ctx.bot.reply("thanks for reporting the quest!  Here are today's quests: <https://www.goo.gl/8h8jdQ>.")
    #discord.Client.add_reaction(ctx, ctx.message, emoji="✅")
    #emoji=":white_check_mark:"
    
