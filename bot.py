@@ -123,6 +123,22 @@ async def clearsheet():
            wksheet.delete_row(r)
    await bot.say("The quests from yesterday have been cleared.  Today's quests, if there were any, are still in the sheet.")
 
+#=================================== Raid RSVP ===================================================
+@bot.command(pass_context=True)
+async def find(ctx, *, query):
+    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
+    gc = gspread.authorize(credentials)
+    wksheet = gc.open("QuestReport").get_worksheet(1)
+    last_row = len(wksheet.get_all_records())
+    list_of_lists = wksheet.get_all_values()  #returns list of lists of gym items
+    for n in range(1, last_row):
+        for l in list_of_lists:
+            if str(query) in list_of_lists[n][0]:
+                bot_message = await bot.say(list_of_lists[n][4])
+                bot_message
+                await bot.add_reaction(bot_message, emoji="⭕")
+                break
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
 async def hatchesin(a: int):
