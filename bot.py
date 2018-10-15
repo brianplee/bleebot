@@ -138,14 +138,22 @@ async def find(ctx, *, query):
     gc = gspread.authorize(credentials)
     wksheet = gc.open("QuestReport").get_worksheet(1)
     last_row = len(wksheet.get_all_records())
-    list_of_lists = wksheet.get_all_values()  #returns list of lists of gym items
-    for n in range(1, last_row):
-        for l in list_of_lists:
-            if str(query) in list_of_lists[n][0]:
-                bot_message = await bot.say(list_of_lists[n][4])
-                bot_message
-                await bot.add_reaction(bot_message, emoji="⭕")
-                break
+    list_of_lists = wksheet.get_all_values()  #returns list of lists of gym items (including headers)
+    for l in list_of_lists:
+        if str(query) in l[0]:
+            bot_message = await bot.say(l[4])
+            bot_message
+            await bot.add_reaction(bot_message, emoji="⭕")
+            
+#To avoid calling header row            
+##    for n in range(1, last_row):
+##        for l in list_of_lists:
+##            if str(query) in list_of_lists[n][0]:
+##                bot_message = await bot.say(list_of_lists[n][4])
+##                bot_message
+##                await bot.add_reaction(bot_message, emoji="⭕")
+##                break
+
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
 async def hatchesin(a: int):
