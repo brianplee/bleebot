@@ -11,6 +11,17 @@ import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+#Quests
+# -report 
+# -clearsheet
+
+#Raids
+# -find  
+# -hatchesin 
+# -hatchesat
+# -timeleft
+
+
 #Get token from heroku config'd var 
 bot_token = os.environ['BOT_TOKEN']
 
@@ -26,8 +37,6 @@ async def on_ready():
 
 
 #===============================================================================
-#Bot functions to invoke commands
-
 @bot.command() 
 async def info():
     embed = discord.Embed(title="QuestBot", description="I need quest reports to stay alive.", color=0xeee657)
@@ -52,8 +61,6 @@ async def questbot():
 @bot.command()
 async def greet():
     await bot.say(":smiley: :wave: Hi.  I am Questbot.")
-    
-  
 
 #=====================================Google Sheets ======================================================
 #client_secret = os.environ('CLIENT_SECRET') #TypeError: '_Environ' object is not callable
