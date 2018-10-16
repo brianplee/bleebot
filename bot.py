@@ -185,18 +185,8 @@ async def timeleft(a: int):
 async def tip(a: float, b: float):
     c = a*b/100
     await bot.say("A {}% tip for a ${} meal or service would be: ${}".format(round(b,2), round(a,2), round(c,2)))
-   
-   
-#TO DO: Add X emoji to bot message.  Delete bot message upon user adding that reaction (2 emojies = delete message).
-#http://discordpy.readthedocs.io/en/latest/api.html#discord.on_reaction_add
-#@client.event
-#async def on_reaction_add(reaction, user):
-    #client.delete_message(reaction.message)
-
- 
-
-
     
+#=============================================================================================================
     
 #bot.run(str(os.environ.get('BOT_TOKEN')))
 bot.run(bot_token)
