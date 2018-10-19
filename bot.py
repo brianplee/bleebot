@@ -88,7 +88,7 @@ CLIENT_SECRET = {
 #=====================================Quest Reporter ======================================================
 #'-report' => Writes stop, location, quest notes to google sheet
 #'-sheet' => Returns link to google sheet 
-#'-clearsheet' => clears the google sheets only of quests reported the day before.
+#'-clearsheet' => clears quests where the timestamp != today's date in the google sheets
 #use the _from_parsed_json_keyfile oauth2client method to call hidden client_secrets var with parsed .json contents
        
 @bot.command()
