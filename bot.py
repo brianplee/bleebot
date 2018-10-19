@@ -108,9 +108,6 @@ async def report(ctx, *, stopInfo):
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
    await ctx.bot.add_reaction(ctx.message, emoji="✅")
-   #{ctx.message.author.mention}
-   #discord.Client.add_reaction(ctx, ctx.message, emoji="✅")
-   #emoji=":white_check_mark:"
    
 #===================================Clear Quest Sheet =====================================
 @bot.command()
