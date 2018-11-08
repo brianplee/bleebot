@@ -101,7 +101,7 @@ async def report(ctx, *, stopInfo):
    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").get_worksheet(0)
-   pstDelta = timedelta(hours=7)
+   pstDelta = timedelta(hours=8)  #8 for daylight savings, 7 for normal
    timeStamp = datetime.now() - pstDelta    
    formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)
    reporterName = str(discord.Message.author)  #returns location in register(?), not the name.  name attribute doesn't exist anymore?  
@@ -116,7 +116,7 @@ async def clearsheet():
    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").sheet1
-   pstDelta = timedelta(hours=7)
+   pstDelta = timedelta(hours=8)
    current_time = datetime.now() - pstDelta
    current_time_date = current_time.date()
    last_row = len(wksheet.get_all_records())
@@ -147,7 +147,7 @@ async def find(ctx, *, query):
 async def hatchesin(a: int):
     hatchMin = timedelta(minutes=a)
     raidDuration = timedelta(minutes=45)
-    pstDelta = timedelta(hours=7)
+    pstDelta = timedelta(hours=8)
     currentTime = datetime.now() - pstDelta
     hatchTime = currentTime + hatchMin
     despawnTime = currentTime + hatchMin + raidDuration 
@@ -170,7 +170,7 @@ async def hatchesat(a):
 @bot.command()
 async def timeleft(a: int):
     timeRemaining = timedelta(minutes=a)
-    pstDelta = timedelta(hours=7)
+    pstDelta = timedelta(hours=8)
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
     await bot.say("Reported at {:%I:%M%p}".format(currentTime))
