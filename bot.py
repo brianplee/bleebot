@@ -93,9 +93,10 @@ CLIENT_SECRET = {
        
 @bot.command()
 async def sheet():
-    await bot.reply("what's good?  Here are today's reported quests: <https://www.goo.gl/5afqk6>")
+    await bot.reply("what's good?  Here are today's reported quests: <https://bit.ly/2TNp91e>")
     #goo.gl/5afqk6
     #goo.gl/8h8jdQ
+    #https://bit.ly/2TNp91e
 
 
 @bot.command(pass_context=True)
