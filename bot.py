@@ -115,7 +115,7 @@ async def report(ctx, *, stopInfo):
    
 #===================================Clear Quest Sheet =====================================
 @bot.command()
-async def clearsheet():
+async def clearsheet(ctx):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
    gc = gspread.authorize(credentials)
@@ -129,7 +129,8 @@ async def clearsheet():
        quest_date = datetime.strptime(quest_timestamp, '%Y/%m/%d %I:%M%p').date()
        if quest_timestamp is not None and quest_date != current_time_date:
            wksheet.delete_row(r)
-   await bot.say("The quests from yesterday have been cleared.  Today's quests, if there were any, are still in the sheet.")
+   await ctx.bot.add_reaction(ctx.message, emoji="✅")
+   #await bot.say("The quests from yesterday have been cleared.  Today's quests, if there were any, are still in the sheet.")
 
 #=================================== Raid RSVP ===================================================
 @bot.command(pass_context=True)
