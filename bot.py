@@ -114,7 +114,7 @@ async def report(ctx, *, stopInfo):
    await ctx.bot.add_reaction(ctx.message, emoji="✅")
    
 #===================================Clear Quest Sheet =====================================
-@bot.command()
+@bot.command(pass_context=True)
 async def clearsheet(ctx):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
