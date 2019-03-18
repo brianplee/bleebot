@@ -107,8 +107,7 @@ async def report(ctx, *, stopInfo):
    wksheet = gc.open("QuestReport").get_worksheet(0)
    pstDelta = timedelta(hours=7)  #8 for daylight savings, 7 for normal
    timeStamp = datetime.now() - pstDelta    
-   formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)
-   reporterName = str(discord.Message.author)  #returns location in register(?), not the name.  name attribute doesn't exist anymore?  
+   formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)  
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
    await ctx.bot.add_reaction(ctx.message, emoji="✅")
