@@ -13,7 +13,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 #Quests
 # -report 
-# -clearsheet
+# -clearoldquests
 
 #Raids
 # -find  
@@ -114,12 +114,12 @@ async def report(ctx, *, stopInfo):
    
 #===================================Clear Quest Sheet =====================================
 @bot.command(pass_context=True)
-async def clearsheet(ctx):
+async def clearoldquests(ctx):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").sheet1
-   pstDelta = timedelta(hours=8)
+   pstDelta = timedelta(hours=7)
    current_time = datetime.now() - pstDelta
    current_time_date = current_time.date()
    last_row = len(wksheet.get_all_records())
@@ -151,7 +151,7 @@ async def find(ctx, *, query):
 async def hatchesin(a: int):
     hatchMin = timedelta(minutes=a)
     raidDuration = timedelta(minutes=45)
-    pstDelta = timedelta(hours=8)
+    pstDelta = timedelta(hours=7)
     currentTime = datetime.now() - pstDelta
     hatchTime = currentTime + hatchMin
     despawnTime = currentTime + hatchMin + raidDuration 
@@ -174,7 +174,7 @@ async def hatchesat(a):
 @bot.command()
 async def timeleft(a: int):
     timeRemaining = timedelta(minutes=a)
-    pstDelta = timedelta(hours=8)
+    pstDelta = timedelta(hours=7)
     currentTime = datetime.now() - pstDelta
     despawnTime = currentTime + timeRemaining 
     await bot.say("Reported at {:%I:%M%p}".format(currentTime))
