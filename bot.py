@@ -107,7 +107,7 @@ async def report(ctx, *, stopInfo):
    wksheet = gc.open("QuestReport").get_worksheet(0)
    pstDelta = timedelta(hours=7)  #8 for daylight savings, 7 for normal
    timeStamp = datetime.now() - pstDelta    
-   formattedTimeStamp = "{:%Y/%m/%d %I:%M%p}".format(timeStamp)  
+   formattedTimeStamp = "{:%m/%d/%Y %I:%M%p}".format(timeStamp)  
    stopName, stopLoc, stopReward = stopInfo.split(",")
    wksheet.append_row([stopName, stopLoc, stopReward, formattedTimeStamp])
    await ctx.bot.add_reaction(ctx.message, emoji="✅")
@@ -125,7 +125,7 @@ async def clearoldquests(ctx):
    last_row = len(wksheet.get_all_records())
    for r in reversed(range(2, last_row+2)):
        quest_timestamp = wksheet.cell(r, 4).value
-       quest_date = datetime.strptime(quest_timestamp, '%Y/%m/%d %I:%M%p').date()
+       quest_date = datetime.strptime(quest_timestamp, '%m/%d/%Y %I:%M%p').date()
        if quest_timestamp is not None and quest_date != current_time_date:
            wksheet.delete_row(r)
    await ctx.bot.add_reaction(ctx.message, emoji="✅")
