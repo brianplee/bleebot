@@ -144,7 +144,7 @@ async def find(ctx, *, query):
         if str(query) in l[0]:
             bot_message = await bot.say(l[4])
             bot_message
-            await bot.add_reaction(bot_message, emoji="⭕")
+            #await bot.add_reaction(bot_message, emoji="⭕")
 
 #===================================Despawn from minutes until hatch =====================================
 @bot.command()
