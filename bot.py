@@ -40,9 +40,9 @@ async def on_ready():
 @bot.command() 
 async def info():
     embed = discord.Embed(title="QuestBot", description="I need quest reports to stay alive.", color=0xeee657)
-    embed.add_field(name="Author", value="bleeinyourself")
+    embed = embed.add_field(name="Author", value="bleeinyourself")
     #embed.add_field(name="Server Count", value=f"{len(bot.guilds)}")
-    embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
+    embed = embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
     await bot.say(embed=embed)
 
 @bot.command()
