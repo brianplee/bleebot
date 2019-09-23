@@ -45,7 +45,7 @@ async def info():
     #embed = embed.add_field(name="Add me to your server:", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot)")
     #await bot.say(embed=embed)
     invite_link = 'https://discordapp.com/oauth2/authorize?client_id=469366032176381952&scope=bot'
-    await bot.say("Hi, I'm QuestBot.  Add me to your server: {}".format(link=invite_link, text="Invite Link"))
+    await bot.say("Hi, I'm QuestBot.  Add me to your server: {}".format(invite_link))
 
 @bot.command()
 async def questbot():
