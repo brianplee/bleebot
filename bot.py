@@ -97,7 +97,7 @@ CLIENT_SECRET = {
 #'-sheet' => Returns link to google sheet 
 #'-clearsheet' => clears quests where the timestamp != today's date in the google sheets
 #use the _from_parsed_json_keyfile oauth2client method to call hidden client_secrets var with parsed .json contents
-       
+# credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
 @bot.command()
 async def sheet():
     await bot.reply("what's good?  Here are today's reported quests: <https://bit.ly/2TNp91e>")
@@ -109,7 +109,7 @@ async def sheet():
 @bot.command(pass_context=True)
 async def report(ctx, *, stopInfo):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-   credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
+   credentials = ServiceAccountCredentials._from_json_keyfile_dict(client_secret, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").get_worksheet(0)
    pstDelta = timedelta(hours=7)  #8 for daylight savings, 7 for normal
@@ -123,7 +123,7 @@ async def report(ctx, *, stopInfo):
 @bot.command(pass_context=True)
 async def clearoldquests(ctx):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-   credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
+   credentials = ServiceAccountCredentials._from_json_keyfile_dict(client_secret, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").sheet1
    pstDelta = timedelta(hours=7)
@@ -142,7 +142,7 @@ async def clearoldquests(ctx):
 @bot.command(pass_context=True)
 async def find(ctx, *, query):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
+    credentials = ServiceAccountCredentials._from_json_keyfile_dict(client_secret, scope)
     gc = gspread.authorize(credentials)
     wksheet = gc.open("QuestReport").get_worksheet(1)
     last_row = len(wksheet.get_all_records())
