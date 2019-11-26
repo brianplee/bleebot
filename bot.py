@@ -27,7 +27,7 @@ bot_token = os.environ['BOT_TOKEN']
 
 client_key = os.environ['CLIENT_KEY']
 client_email = os.environ['CLIENT_EMAIL']
-CLIENT_SECRET = os.environ['CLIENT_SECRET']
+client_secret = os.environ['CLIENT_SECRET']
 
 bot = commands.Bot(command_prefix='-')
 
@@ -109,7 +109,7 @@ async def sheet():
 @bot.command(pass_context=True)
 async def report(ctx, *, stopInfo):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-   credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
+   credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").get_worksheet(0)
    pstDelta = timedelta(hours=7)  #8 for daylight savings, 7 for normal
@@ -123,7 +123,7 @@ async def report(ctx, *, stopInfo):
 @bot.command(pass_context=True)
 async def clearoldquests(ctx):
    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-   credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
+   credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
    gc = gspread.authorize(credentials)
    wksheet = gc.open("QuestReport").sheet1
    pstDelta = timedelta(hours=7)
@@ -142,7 +142,7 @@ async def clearoldquests(ctx):
 @bot.command(pass_context=True)
 async def find(ctx, *, query):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(CLIENT_SECRET, scope)
+    credentials = ServiceAccountCredentials._from_parsed_json_keyfile(client_secret, scope)
     gc = gspread.authorize(credentials)
     wksheet = gc.open("QuestReport").get_worksheet(1)
     last_row = len(wksheet.get_all_records())
